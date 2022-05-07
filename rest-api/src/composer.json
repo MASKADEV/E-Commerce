@@ -1,0 +1,17 @@
+{
+    "name": "mac/src",
+    "autoload": {
+        "psr-4": {
+            "Mac\\Src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "maskadev",
+            "email": "sidkiyouness@gmail.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.1"
+    }
+}
