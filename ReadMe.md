@@ -31,11 +31,11 @@
 
 
 <div class="sc-7lcum6-0 edCusw"><h2 class="ekeyz-0 dPTSJD">Deliverables</h2><p class="ekeyz-0 jasXoh">Un dépôt GitHub qui contient :
-- Le cahier des charges (version Docx et PDF)
-- La maquette et la charte graphique du site en PDF (version Desktop et Mobile) et le fichier source de la maquette (Adobe XD ) ou bien un fichier texte contenant le lien (Figma).
-- La conception UML (Use Case, Classe, Séquences en version PDF)
-- Le rapport du projet (version Docx et PDF)
-- Le script SQL de la base de données.
-- La présentation du projet (version PDF et version  PPTX ou bien fichier texte contenant le lien de la présentation)
-- Le code source de l'application (Backend &amp; Frontend).
-- Un lien d'hébergement du site si vous l'avez déployé.</p></div>
+<div>- Le cahier des charges (version Docx et PDF)</div>
+<div>- La maquette et la charte graphique du site en PDF (version Desktop et Mobile) et le fichier source de la maquette (Adobe XD ) ou bien un fichier texte contenant le lien (Figma).</div>
+<div>- La conception UML (Use Case, Classe, Séquences en version PDF)</div>
+<div>- Le rapport du projet (version Docx et PDF)</div>
+<div>- Le script SQL de la base de données.</div>
+<div>- La présentation du projet (version PDF et version  PPTX ou bien fichier texte contenant le lien de la présentation)</div>
+<div>- Le code source de l'application (Backend &amp; Frontend).</div>
+<div>- Un lien d'hébergement du site si vous l'avez déployé.</p></div></div>
