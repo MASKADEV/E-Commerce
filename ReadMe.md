@@ -25,6 +25,7 @@
 <p class="ekeyz-0 jasXoh">​</p>
 </div></div></div>
 
+
 <div class="sc-7lcum6-0 edCusw"><h2 class="ekeyz-0 dPTSJD">Assessment methods</h2><div><div><p class="ekeyz-0 jasXoh">Soutenance a l'oral devant un jury.</p>
 </div></div></div>
 
