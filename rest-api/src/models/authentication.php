@@ -1,18 +1,20 @@
 <?php 
 
 class Authentication {
-    public function  __construct () {
-    }
 
-    public function signup($id, $name, $email, $password) {
+
+    public function signup($full_name, $email, $password) {
         require_once('connection.php');
-        $db = new Database(); 
-        if(empty($db->selectOne('users','email',$email))){
-        $result = $db->insert('users', ['id', 'full_name', 'email', 'password'], [$id, $name, $email, $password]);
-        return ($result);
+        $db = new Database();
+        $query = $db->connection()->prepare("INSERT INTO `users`(`full_name`, `email`, `password`) VALUES (:full_name, :email, :password)");
+        $result = $query->execute([':full_name' => $full_name, ':email' => $email, ':password' => $password]);
+        if($result)
+        {
+            return Authentication::message('user has been added!', 0, false);
         }else {
-            return false;
+            return Authentication::message('user has not been added!', null, true);
         }
+        
     }
 
     public function signin($id) {
@@ -22,11 +24,10 @@ class Authentication {
         return $result['id'];
     }
 
-    public static function message($content, $toekn , $user_id, $status) {
+    public static function message($content, $user_id, $status) {
 	    return json_encode(array(
             'message' => $content, 
             'user_id' => $user_id,
-            'token' => $toekn,
             'error' => $status
             ));
 	}

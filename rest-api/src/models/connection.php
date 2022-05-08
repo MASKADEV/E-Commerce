@@ -6,18 +6,19 @@ class Database
 	private $username = "root";
 	private $password = "";
 	private $database="ecommerce-pfa";
-	private $conn;
 
 	public function __construct()
 	{
+	}
 
+	public function connection(){
 		try {
-			  $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->database", $this->username, $this->password);
-			//   echo 'connection is Done!';
-			} catch(PDOException $e) 
-			{
-			  echo "Connection failed: " . $e->getMessage();
-			}
+			$conn = new PDO("mysql:host=$this->servername;dbname=$this->database", $this->username, $this->password);
+			return $conn;
+		} catch(PDOException $e) 
+		{
+			echo "Connection failed: " . $e->getMessage();
+		}
 	}
 
 	public function insert($table,$tableCln,$tableVal)
