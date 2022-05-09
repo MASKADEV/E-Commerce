@@ -3,10 +3,6 @@ require_once 'src/security/jwt_handler.php';
 
 class UsersController extends JwtController{
 
-	public function __construct()
-	{
-	}
-
 	public function index() {
 		echo 'index users';
 	}
@@ -54,6 +50,23 @@ class UsersController extends JwtController{
 
 		}else {
 			echo Authentication::message('Internal server issue please contact the support Team',null ,true);
+		}
+	}
+
+	public function deleteUser(){
+		require_once('src/models/authentication.php');
+		require_once('src/config/Header.php');
+		if($_SERVER['REQUEST_METHOD'] == 'POST'){
+			ini_set('display_errors', 1);
+			ini_set('display_startup_errors', 1);
+			error_reporting(E_ALL);
+			$user_id = $_POST['user_id'];
+			if(!empty($user_id)){
+				$auth = new Authentication();
+				echo $auth->deleteUser($user_id);
+			}else{
+				echo Authentication::message('invalide request please contact support', null, true);
+			}
 		}
 	}
 }
