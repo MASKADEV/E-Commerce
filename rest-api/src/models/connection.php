@@ -6,9 +6,15 @@ class Database
 	private $username = "root";
 	private $password = "";
 	private $database="ecommerce-pfa";
-
+	private $conn;
 	public function __construct()
 	{
+		try {
+			$this->conn = new PDO("mysql:host=$this->servername;dbname=$this->database", $this->username, $this->password);
+		} catch(PDOException $e) 
+		{
+			echo "Connection failed: " . $e->getMessage();
+		}
 	}
 
 	public function connection(){
@@ -21,30 +27,6 @@ class Database
 		}
 	}
 
-	public function insert($table,$tableCln,$tableVal)
-	{
-		$names="";
-		$values="";
-		$vrls="";
-		for ($i=0; $i <count($tableCln) ; $i++)
-		{ 
-			if ($i>0) 
-			{
-				$vrls=",";
-			}
-			$names.=$vrls."`".$tableCln[$i]."`";
-			$values.=$vrls."'".$tableVal[$i]."'";
-		}
-		$str="INSERT INTO `$table`(".$names.") VALUES (".$values.")";
-		$query=$this->conn->prepare($str);
-		if($query->execute()) {
-			return true;
-		}else {
-			return false;
-		}
-	}
-
-
 	public function selectAll($table)
 	{
 		$query=$this->conn->prepare("SELECT * FROM `$table`");
@@ -55,11 +37,11 @@ class Database
 
 	public function delete($table,$id)
 	{
-		$query=$this->conn->prepare("DELETE FROM `$table` WHERE id=$id");
-		return $query->execute();
+		$query=$this->conn->prepare("DELETE FROM users WHERE id=?");
+		return $query->execute([$id]);
 	}
 
-	public function checkUserExist($id) {
+	public function fetchUseerDetails($id) {
 		$str = "SELECT * FROM `users` WHERE id=?";
 		$query=$this->conn->prepare($str);
 		$query->execute(
