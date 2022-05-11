@@ -7,8 +7,10 @@ class Database
 	private $password = "";
 	private $database="ecommerce-pfa";
 	private $conn;
+	
 	public function __construct()
 	{
+		//Connection for local Methods
 		try {
 			$this->conn = new PDO("mysql:host=$this->servername;dbname=$this->database", $this->username, $this->password);
 		} catch(PDOException $e) 
@@ -17,6 +19,9 @@ class Database
 		}
 	}
 
+
+
+	//Commun Function
 	public function connection(){
 		try {
 			$conn = new PDO("mysql:host=$this->servername;dbname=$this->database", $this->username, $this->password);
