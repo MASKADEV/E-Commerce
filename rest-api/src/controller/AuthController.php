@@ -3,9 +3,10 @@
 class AuthController{
 
 	public function index() {
-		echo 'index users';
+		echo 'Auth Controller';
 	}
 
+	// Signin Methods
 	public function signin()
 	{
 				if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -27,6 +28,7 @@ class AuthController{
 				}
 	}
 
+	// Sign up Methods
 	public function signup() {
 		ini_set('display_errors', 1);
 		ini_set('display_startup_errors', 1);
@@ -52,6 +54,7 @@ class AuthController{
 		}
 	}
 
+	//Delete User Methods
 	public function deleteUser(){
 		require_once('src/models/auth/authentication.php');
 		require_once('src/config/Header.php');
