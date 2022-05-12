@@ -174,7 +174,6 @@ class AdminController {
         }
     }
 
-
     public static function message($content, $status) {
 	    return json_encode(array(
             'message' => $content, 
