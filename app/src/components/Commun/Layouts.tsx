@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import NavBar from '../NavBar/NavBar';
-
+import SideBar from '../NavBar/SideBar';
 
 export default function Layout({ children } : any) {
   return (
-    <main className='font-[Poppins]'>
+    <main className='font-[Poppins] w-screen h-screen  bg-primary-bg'>
       <header>
         <NavBar />
       </header>
-      <div>1</div>
-      <article className='mt-24 w-screen'>{children}</article>
+      <div className='flex flex-row'>
+        <SideBar />
+        <article className='mt-24'>{children}</article>
+      </div>
     </main>
   )
 }
