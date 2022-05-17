@@ -11,6 +11,11 @@ module.exports = {
       'white': '#FFFFFF',
       'hover-bg' :'#323232',
       'main-color' :'#25B37E',
+      'gray' : '#A8A8A8'
+    },
+    backdropFilter: {
+      'none': 'none',
+      'blur': 'blur(20px)',
     },
     extend: {},
   },
