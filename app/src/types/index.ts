@@ -5,9 +5,10 @@ export interface  NavBarLinks {
     title : string
 }
 
-export interface Signinput {
+export interface CustomInputProps {
     id:string,
     label:string,
     placeholder:string,
-    type:string
+    type:string,
+    useRef : React.LegacyRef<HTMLInputElement> | undefined
 }
