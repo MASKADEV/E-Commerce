@@ -1,8 +1,9 @@
 import React, {useRef} from 'react'
 import CustomInput from '../../../components/ui/AuthInput/CustomInput';
+import { AuthProps } from '../../../types';
 
 
-const Signup:React.FC = () => {
+const Signup:React.FC<AuthProps> = ({show, setShow}) => {
   
   const inputFullName = useRef<any>("");;
   const inputEmail = useRef<any>("");;
@@ -17,7 +18,7 @@ const Signup:React.FC = () => {
     <div className='bg-navBar-bg md:py-[3rem] py-4 md:px-[6rem] px-[1rem] rounded-md shadow-md'>
       <form onSubmit={onSubmit} className='flex flex-col justify-center items-center'>
         <h1 className='font-medium text-[20px] text-white'>Welcome Back, Get Login</h1>
-        <p className='text-gray mb-4 text-[11px] mt-2'>Create your account. Already have account? <span onClick={() =>{}} className=' text-main-color'>Login Here</span></p>
+        <p className='text-gray mb-4 text-[11px] mt-2'>Create your account. Already have account? <span onClick={() =>{setShow(!show)}} className=' text-main-color cursor-pointer'> Login Here</span></p>
         <div className='py-[1rem] w-full'>
           <CustomInput useRef={inputFullName} type='text' label='Full Name' id='full_name' placeholder='Full Name'/>
           <CustomInput useRef={inputEmail} type='email' label='Email' id='email' placeholder='exemple@email.com'/>
