@@ -1,12 +1,19 @@
-import React from 'react';
-import NavBar from '../NavBar/NavBar';
-import SideBar from '../NavBar/SideBar';
+import React, { useState } from 'react';
+import NavBar from '../ui/NavBar/NavBar';
+import SideBar from '../ui/NavBar/SideBar';
+import AddToCart from '../ui/AddToCart/AddToCart';
+import Authentication from '../../pages/authentication';
 
 export default function Layout({ children } : any) {
+
+  const [showPanie, setShowPanie] = useState<boolean>(false);
+
   return (
     <main className='font-[Poppins] w-screen h-screen  bg-primary-bg'>
       <header>
-        <NavBar />
+        <NavBar showPanier={showPanie} setShowPanier={setShowPanie}/>
+        <AddToCart showPanier={showPanie} setShowPanier={setShowPanie} />
+        <Authentication />
       </header>
       <div className='flex flex-row'>
         <SideBar />
