@@ -1,8 +1,8 @@
 import React from 'react'
-import { AddProductsCardsProps } from '../../types'
+import { ProductsProps } from '../../types'
 import { CloseIcon } from '../icons/close-icon'
 
-const Product : React.FC<AddProductsCardsProps> = ({title, categorie, price, image_url}) => {
+const Product : React.FC<ProductsProps> = ({title, categorie, price, image_url}) => {
   return (
     <div className='flex flex-col justify-between h-full mt-3'>
         <div className='flex flex-row h-[7rem] w-full justify-between items-center mx-3 '>
