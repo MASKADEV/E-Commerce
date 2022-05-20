@@ -14,18 +14,23 @@ export interface CustomInputProps {
 }
 
 export interface AuthProps {
-    show : boolean,
-    setShow : React.SetStateAction<any>
+    show? : boolean,
+    setShow? : React.SetStateAction<any>,
+    showAuth? : boolean,
+    setAuth? : React.SetStateAction<any>,
 }
 
-export interface AddProductsCardsProps {
+export interface ProductsProps {
     title : string,
     categorie : string,
     price : number,
     image_url : string,
+    description? : string,
 }
 
-export interface showPanieProps {
-    showPanier : boolean,
-    setShowPanier : React.SetStateAction<any>,
+export interface navBarProps {
+    showPanier? : boolean,
+    setShowPanier? : React.SetStateAction<any>,
+    showAuth? : boolean,
+    setAuth? : React.SetStateAction<any>,
 }
