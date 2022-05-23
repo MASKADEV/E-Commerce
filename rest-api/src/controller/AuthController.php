@@ -37,10 +37,11 @@ class AuthController{
 		require_once('src/config/Header.php');
 		if($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-			// $email = json_decode(file_get_contents("php://input"));
-			$full_name = $_POST['full_name'];
-			$email = $_POST['email'];
-			$password = $_POST['password'];
+			$data = json_decode(file_get_contents("php://input"));
+			$full_name = $data->full_name;
+			$email = $data->email;
+			$password = $data->password;
+			
 			if(!empty($email) && !empty($full_name) && !empty($password)){
 					$auth =  new Authentication();
 					$result = $auth->signup($full_name, $email, $password);
