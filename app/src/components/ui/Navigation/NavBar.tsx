@@ -3,8 +3,12 @@ import { navBarProps } from '../../../types';
 import { EmptyCartIcon } from '../../icons/empty-cart-icon';
 import { SearchIcon } from '../../icons/search-icon';
 import { UserIcon } from '../../icons/user-icon';
+import useAuth from '../../../hooks/useAuth';
+import { Link } from 'react-router-dom';
 
-const NavBar:React.FC<navBarProps> = ({showPanier,setShowPanier, setAuth, showAuth}) => {
+const NavBar:React.FC<navBarProps> = ({showProfile, setProfile, showPanier, setShowPanier, setAuth, showAuth}) => {
+
+  let auth = useAuth();
 
   return (
     <div className='fixed z-20 h-[70px] bg-second-bg text-white w-full shadow-md bg-navBar-bg'>
@@ -17,9 +21,11 @@ const NavBar:React.FC<navBarProps> = ({showPanier,setShowPanier, setAuth, showAu
             <button onClick={() => {setShowPanier(!showPanier)}} className='md:mr-[4rem] mr-[2rem]'>
               <EmptyCartIcon className='md:h-[20px] h-[25px]' />
             </button>
-            <button onClick={() => {setAuth(!showAuth)}} className='font-bold text-lg'>
-              <UserIcon className='md:h-[20px] h-[25px]'/>
-            </button>
+            {
+              auth ? <Link to={'/profile'}><UserIcon className='md:h-[20px] h-[25px]'/></Link>:
+                    <button onClick={() => {setAuth(!showAuth)}} className='font-bold text-lg'>
+                      <UserIcon className='md:h-[20px] h-[25px]'/></button>
+            }
           </nav>
         </div>
     </div>
