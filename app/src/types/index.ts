@@ -44,3 +44,9 @@ export interface ProfileInputsProps{
     setEdit? : React.SetStateAction<any>,
     useRef : React.LegacyRef<HTMLInputElement> | undefined,
 }
+
+export interface UserDetails {
+    full_name : string,
+    address : string,
+    email : string,
+}
