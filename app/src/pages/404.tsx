@@ -2,7 +2,7 @@ import React from 'react'
 
 const PageNotFound = () => {
   return (
-    <section className=' w-full h-full absolute top-0 left-0 flex items-center justify-center bg-primary-bg'>
+    <section className='fixed w-full h-full top-0 left-0 flex items-center justify-center bg-primary-bg'>
       <div className="bg-black text-white">
         <div className="flex h-screen">
           <div className="m-auto text-center">
