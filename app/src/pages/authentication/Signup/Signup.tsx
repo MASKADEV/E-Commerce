@@ -2,6 +2,8 @@ import React, {useRef} from 'react'
 import { CloseIcon } from '../../../components/icons/close-icon';
 import CustomInput from '../../../components/ui/AuthInput/CustomInput';
 import { AuthProps } from '../../../types';
+import axios from 'axios';
+import GlobalVarialble from '../../../config/constants/Constant';
 
 
 const Signup:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
@@ -11,13 +13,30 @@ const Signup:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
   const inputPassword = useRef<any>("");
   const inputPasswordConfirmation = useRef<any>("");
 
-  const onSubmit = (e : React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e : React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    if(inputPassword.current.value === inputPasswordConfirmation.current.value){
+      let {data} = await axios.post(`${GlobalVarialble.url}/auth/signup`, JSON.stringify({
+        'full_name' : inputFullName.current.value,
+        'email' : inputEmail.current.value,
+        'password' : inputPassword.current.value,
+      }))
+
+      if(data['status'] === 200) {
+        localStorage.setItem('full_name', data['full_name']);
+        localStorage.setItem('email', data['email']);
+        window.location.reload();
+      }
+
+      
+    }else {
+      alert("password didn't Match");
+    }
   }
 
   return (
     <div className='bg-navBar-bg md:py-[3rem] py-4 md:px-[6rem] px-[1rem] rounded-md shadow-md'>
-      <form onSubmit={onSubmit} className='flex flex-col justify-center items-center'>
+      <form className='flex flex-col justify-center items-center'>
         <div className='flex flex-row justify-between w-full items-center'>
           <h1 className='font-medium text-[20px] text-white'>Welcome Back, Get Login</h1>
           <CloseIcon onClick={() => {setAuth(!showAuth)}} className='text-gray h-[1.4rem] cursor-pointer'/>
@@ -30,7 +49,7 @@ const Signup:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
           <CustomInput useRef={inputPasswordConfirmation} type='password' label='Confirm Password' id='password_confirmation' placeholder='***********'/>
         </div>
         <div className='flex flex-row justify-between items-center mt-5 w-full'>
-          <button type='submit' className='py-3 px-2 w-full bg-main-color rounded-sm'>Sign up</button>
+          <button type='submit' onClick={onSubmit} className='py-3 px-2 w-full bg-main-color rounded-sm'>Sign up</button>
         </div>
       </form>
     </div>

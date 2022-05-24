@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import EditIcon from '../../components/icons/edit';
 import ProfileInput from '../../components/ui/ProfileInput/ProfileInput';
 import useAuth from '../../hooks/useAuth';
+import { UserDetails } from '../../types';
 
 const Profile:React.FC = () => {
 
@@ -13,10 +14,15 @@ const Profile:React.FC = () => {
   const [edit, setedit] = useState<boolean>(true);
 
   let navigate = useNavigate();
+  const [userDetails, setUserDetails] = useState<UserDetails>();
 
   const CheckAuth = () => {
     const auth = useAuth();
-    if(!auth) return navigate('/', {replace : true});
+    if(!auth)
+     {return navigate('/', {replace : true});}
+    else {
+
+    }
   }
 
   useEffect(() => {
