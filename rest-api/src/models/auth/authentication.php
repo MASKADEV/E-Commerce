@@ -1,6 +1,8 @@
 <?php 
 
 class Authentication {
+
+    
     public function signup($full_name, $email, $password) {
         require_once('src/models/connection.php');
         $db = new Database();
@@ -13,7 +15,7 @@ class Authentication {
             $result = $query->execute([':full_name' => $full_name, ':email' => $email, ':password' => $password]);
             if(!empty($result))
             {
-                return Authentication::message('user has been added!', 0, false);
+                return json_encode(['status'=>'200', 'full_name' => $full_name, 'email' => $email, 'password'=>$password]);
             }else {
                 return Authentication::message('user has not been added!', null, true);
             }
@@ -51,8 +53,8 @@ class Authentication {
 
     public static function message($content, $user_id, $status) {
 	    return json_encode(array(
-            'message' => $content, 
-            'user_id' => $user_id,
+            'status' => $content, 
+            'body' => $user_id,
             'error' => $status
             ));
 	}

@@ -9,23 +9,24 @@ class AuthController{
 	// Signin Methods
 	public function signin()
 	{
-				if($_SERVER['REQUEST_METHOD'] == 'POST')
-				{
-					ini_set('display_errors', 1);
-					ini_set('display_startup_errors', 1);
-					error_reporting(E_ALL);
-					require_once('src/models/auth/authentication.php');
-					require_once('src/config/Header.php');
-						$auth =  new Authentication();
-						$email = $_POST['email'];
-						$password = $_POST['password'];
-						$result = $auth->signin($email, $password);
-						if(!empty($result)){
-							echo Authentication::message('Logedin!', $result['id'] ,false);
-						}else {
-							echo Authentication::message('invalide email or password', null, null, true);
-						}
+		if($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+			ini_set('display_errors', 1);
+			ini_set('display_startup_errors', 1);
+			error_reporting(E_ALL);
+			require_once('src/models/auth/authentication.php');
+			require_once('src/config/Header.php');
+				$auth =  new Authentication();
+				$data = json_decode(file_get_contents("php://input"));
+				$email = $data->email;
+				$password = $data->password;
+				$result = $auth->signin($email, $password);
+				if(!empty($result)){
+					echo Authentication::message('200', $result ,false);
+				}else {
+					echo Authentication::message('invalide email or password', null, null, true);
 				}
+		}
 	}
 
 	// Sign up Methods
