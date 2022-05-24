@@ -1,5 +1,3 @@
-
-
 export interface  NavBarLinks { 
     link : string,
     title : string
@@ -31,6 +29,18 @@ export interface ProductsProps {
 export interface navBarProps {
     showPanier? : boolean,
     setShowPanier? : React.SetStateAction<any>,
+    showProfile? : boolean,
+    setProfile? : React.SetStateAction<any>,
     showAuth? : boolean,
     setAuth? : React.SetStateAction<any>,
+}
+
+export interface ProfileInputsProps{
+    id:string,
+    label:string,
+    placeholder:string,
+    type:string,
+    edit? : boolean,
+    setEdit? : React.SetStateAction<any>,
+    useRef : React.LegacyRef<HTMLInputElement> | undefined,
 }
