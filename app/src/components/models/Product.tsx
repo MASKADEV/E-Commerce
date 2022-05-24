@@ -16,7 +16,6 @@ const Product : React.FC<ProductsProps> = ({title, categorie, price, image_url})
                 </div>
             </div>
         </div>
-
     </div>
   )
 }

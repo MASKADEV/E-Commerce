@@ -3,7 +3,7 @@ import { ProductsProps } from '../../../types'
 
 const ProductCard:React.FC<ProductsProps> = ({title, description, image_url, price, categorie}) => {
   return (
-        <div className="flex flex-col text-white p-4 md:ml-3 items-center">
+        <div className="relative flex flex-col text-white p-4 md:ml-3 items-center overflow-hidden">
             <div className='h-[300px] w-[300px] overflow-hidden'>
                 <img className='rounded-md' src={image_url} alt="products" />
             </div>
