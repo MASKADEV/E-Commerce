@@ -2,7 +2,6 @@
 
 class Authentication {
 
-    
     public function signup($full_name, $email, $password) {
         require_once('src/models/connection.php');
         $db = new Database();
@@ -15,12 +14,12 @@ class Authentication {
             $result = $query->execute([':full_name' => $full_name, ':email' => $email, ':password' => $password]);
             if(!empty($result))
             {
-                return json_encode(['status'=>'200', 'full_name' => $full_name, 'email' => $email, 'password'=>$password]);
+                return json_encode(['status'=>'200', 'message'=>'success']);
             }else {
-                return Authentication::message('user has not been added!', null, true);
+                return json_encode(['status'=>'200', 'message'=>'user not added']);
             }
         }else {
-            return Authentication::message('user already exist', null, false);
+            return json_encode(['status'=>'200', 'message'=>'user already exist try to login please']);
         }
         
     }
