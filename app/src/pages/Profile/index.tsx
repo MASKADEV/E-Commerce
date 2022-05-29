@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import EditIcon from '../../components/icons/edit';
 import ProfileInput from '../../components/ui/ProfileInput/ProfileInput';
 import useAuth from '../../hooks/useAuth';
-import { UserDetails } from '../../types';
 
 const Profile:React.FC = () => {
 
@@ -14,14 +13,15 @@ const Profile:React.FC = () => {
   const [edit, setedit] = useState<boolean>(true);
 
   let navigate = useNavigate();
-  const [userDetails, setUserDetails] = useState<UserDetails>();
 
   const CheckAuth = () => {
     const auth = useAuth();
     if(!auth)
      {return navigate('/', {replace : true});}
     else {
-
+      full_name.current.value = localStorage.getItem('full_name');
+      email.current.value = localStorage.getItem('email');
+      address.current.value = localStorage.getItem('address');
     }
   }
 
@@ -29,6 +29,13 @@ const Profile:React.FC = () => {
     CheckAuth();
   },)
   
+  const logout = () => {
+    localStorage.removeItem('email');
+    localStorage.removeItem('full_name');
+    localStorage.removeItem('address');
+    localStorage.removeItem('user_id');
+    window.location.reload();
+  }
 
   return (
     <div className='w-full h-full flex flex-row items-center justify-center z-20'>
@@ -37,7 +44,10 @@ const Profile:React.FC = () => {
       <div className='p-11 bg-neutral-800 w-[40rem] relative flex flex-col justify-center md:mt-[10rem]'>
         <div className='flex flex-row  items-center justify-between'>
           <h1 className='text-white text-2xl font-medium'>Profile</h1>
-          <EditIcon onClick={() => {setedit(!edit)}}  className='h-[1.3rem] mr-3 cursor-pointer text-white m-3 '/>
+          <div className='flex flex-row'>
+            <EditIcon onClick={() => {setedit(!edit)}}  className='h-[1.3rem] mr-3 cursor-pointer text-white m-3 '/>
+            <button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {logout()}} className='px-3 text-white'>Logout</button>
+          </div>
         </div>
         <form action="" className='w-full flex flex-col items-center'>
           <div className='flex flex-row items-center'>
