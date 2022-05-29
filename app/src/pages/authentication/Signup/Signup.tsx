@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import { CloseIcon } from '../../../components/icons/close-icon';
 import CustomInput from '../../../components/ui/AuthInput/CustomInput';
 import { AuthProps } from '../../../types';
@@ -12,6 +12,7 @@ const Signup:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
   const inputEmail = useRef<any>("");;
   const inputPassword = useRef<any>("");
   const inputPasswordConfirmation = useRef<any>("");
+  const [message, setmessage] = useState('sfdsf');
 
   const onSubmit = async (e : React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -20,15 +21,15 @@ const Signup:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
         'full_name' : inputFullName.current.value,
         'email' : inputEmail.current.value,
         'password' : inputPassword.current.value,
-      }))
+      }));
 
       if(data['status'] === 200) {
-        localStorage.setItem('full_name', data['full_name']);
-        localStorage.setItem('email', data['email']);
+        localStorage.setItem('full_name', data['body']['full_name']);
+        localStorage.setItem('email', data['body']['email']);
+        localStorage.setItem('address', data['body']['address']);
+        localStorage.setItem('user_id', data['body']['id']);
         window.location.reload();
       }
-
-      
     }else {
       alert("password didn't Match");
     }
@@ -50,6 +51,9 @@ const Signup:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
         </div>
         <div className='flex flex-row justify-between items-center mt-5 w-full'>
           <button type='submit' onClick={onSubmit} className='py-3 px-2 w-full bg-main-color rounded-sm'>Sign up</button>
+        </div>
+        <div>
+          {message !== '' ?? message}
         </div>
       </form>
     </div>
