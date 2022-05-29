@@ -16,11 +16,13 @@ const Signin:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
       'email' : inputEmail.current.value,
       'password' : inputPassword.current.value,
     },),);
+
     if(data['status'] === '200'){
-      localStorage.setItem('email', data['email']);
-      localStorage.setItem('full_name', data['full_name']);
-      localStorage.setItem('address', data['address']);
-      localStorage.setItem('user_id', data['id']);
+      localStorage.setItem('email', data['body']['email']);
+      localStorage.setItem('full_name', data['body']['full_name']);
+      localStorage.setItem('address', data['body']['address']);
+      localStorage.setItem('user_id', data['body']['id']);
+      window.location.reload();
     }else {
       alert(data['status']);
     }
