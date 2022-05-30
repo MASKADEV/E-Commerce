@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import EditIcon from '../../components/icons/edit';
-import ProfileInput from '../../components/ui/ProfileInput/ProfileInput';
+import ProfileInput from '../../components/ui/profileInput/ProfileInput';
 import useAuth from '../../hooks/useAuth';
 
 const Profile:React.FC = () => {

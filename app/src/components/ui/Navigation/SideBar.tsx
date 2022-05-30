@@ -3,7 +3,7 @@ import { DiscoverIcon } from '../../icons/discover-icon';
 import { HomeIcon } from '../../icons/home-icon';
 import { InformationIcon } from '../../icons/information-icon';
 import { ProductIcon } from '../../icons/product-icon';
-import NavigationLink from '../Links/NavigationLink';
+import NavigationLink from '../links/NavigationLink';
 
 const SideBar:React.FC = () => {
   return (

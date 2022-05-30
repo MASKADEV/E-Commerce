@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { CloseIcon } from '../../../components/icons/close-icon';
-import CustomInput from '../../../components/ui/AuthInput/CustomInput';
+import CustomInput from '../../../components/ui/authInput/CustomInput';
 import { AuthProps } from '../../../types';
 import axios from 'axios';
 import GlobalVarialble from '../../../config/constants/Constant';
