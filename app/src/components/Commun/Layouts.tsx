@@ -18,7 +18,7 @@ export default function Layout({ children } : any) {
         {showAuth && <Authentication showAuth={showAuth} setAuth={setAuth} /> }
       </header>
       <div className='flex flex-row'>
-        <SideBar />
+        {/* <SideBar /> */}
         <article className='mt-24'>{children}</article>
       </div>
     </main>

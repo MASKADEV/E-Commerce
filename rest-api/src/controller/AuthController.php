@@ -21,7 +21,10 @@ class AuthController{
 				$email = $data->email;
 				$password = $data->password;
 				$result = $auth->signin($email, $password);
+				// print_r($result['password'] . " " .$password);
+				// die;
 				if(!empty($result)){
+					unset($result['password']);
 					echo Authentication::message('200', $result ,false);
 				}else {
 					echo Authentication::message('invalide email or password', null, null, true);
@@ -45,6 +48,7 @@ class AuthController{
 			
 			if(!empty($email) && !empty($full_name) && !empty($password)){
 					$auth =  new Authentication();
+					// $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 					$result = $auth->signup($full_name, $email, $password);
 					echo $result;
 			}else {
