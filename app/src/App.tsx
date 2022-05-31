@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import Layout from './components/commun/Layouts';
+import Dashboard from './pages/Admin/Dashboard';
 
 const  App:React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const  App:React.FC = () => {
       <Routes>
         <Route path='' element={<Layout>{ <Home/>}</Layout>}/>
         <Route path='/home' element={<Layout>{ <Home/>}</Layout>}/>
+        <Route path='/admin' element={<Layout>{ <Dashboard/>}</Layout>}/>
         <Route path='/profile' element={<Layout>{ <Profile /> }</Layout>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
