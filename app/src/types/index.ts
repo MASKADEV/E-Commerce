@@ -50,3 +50,18 @@ export interface UserDetails {
     address : string,
     email : string,
 }
+
+export interface DashboardNavProps {
+    switchMenu : string, 
+    setswitchMenu: React.SetStateAction<any>,
+}
+
+export interface AnalyticsCardProps {
+    title:string,
+    state : string,
+}
+
+export interface ProductsTableProps{
+    products : Array<any>,
+    loading : boolean
+}
