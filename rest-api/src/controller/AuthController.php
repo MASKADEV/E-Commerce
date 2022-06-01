@@ -16,7 +16,13 @@ class AuthController{
 			error_reporting(E_ALL);
 			require_once('src/models/auth/authentication.php');
 			require_once('src/config/Header.php');
+			require_once('src/security/jwt_handler.php');
 				$auth =  new Authentication();
+				$jwt = new JwtController();
+				$token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJuYW1lIjoibWFza2EiLCJyb2xlIjoiYWRtaW4ifQ.X5B-xJVAS7zIO9A-WhmCNvV09rSJVc95Azrzq4N-uRK5hu_3Tg5vhJn0oagwc98j2y16bM7_kdwGiWYCysYVeg';
+				echo json_encode($jwt->verification($token));
+				// echo 'maska';
+				die;
 				$data = json_decode(file_get_contents("php://input"));
 				$email = $data->email;
 				$password = $data->password;
@@ -48,7 +54,6 @@ class AuthController{
 			
 			if(!empty($email) && !empty($full_name) && !empty($password)){
 					$auth =  new Authentication();
-					// $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 					$result = $auth->signup($full_name, $email, $password);
 					echo $result;
 			}else {
