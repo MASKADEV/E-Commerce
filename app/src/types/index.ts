@@ -65,3 +65,8 @@ export interface ProductsTableProps{
     products : Array<any>,
     loading : boolean
 }
+
+export interface SupportProps {
+    page : string,
+    setpage: React.SetStateAction<any>,
+}
