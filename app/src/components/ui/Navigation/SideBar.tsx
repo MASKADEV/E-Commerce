@@ -28,6 +28,17 @@ const SideBar:React.FC = () => {
         </nav>
         <div className=' md:flex hidden flex-col items-center'>
           <div className='h-[2px] w-[95%] mx-4 bg-gray mb-4'></div>
+          <div className='flex flex-row w-[60%] mx-auto justify-between items-center'>
+              <div className='hover:text-main-color text-gray'>
+                <NavigationLink title='FAQ' link='/faq'/>
+              </div>
+              <div className='hover:text-main-color text-gray'>
+                <NavigationLink title='Terms' link='/terms'/>
+              </div>
+              <div className='hover:text-main-color text-gray'>
+                <NavigationLink title='Help' link='/help'/>
+              </div>
+          </div>
           <p className='mb-5 text-gray text-xs'>@ CopyRight 2022 By MASKADEV</p>
         </div>
    </div>
