@@ -3,7 +3,7 @@ import { CloseIcon } from '../../../components/icons/close-icon';
 import CustomInput from '../../../components/ui/authInput/CustomInput';
 import { AuthProps } from '../../../types';
 import axios from 'axios';
-import GlobalVarialble from '../../../config/constants/Constant';
+import GlobalVarialble from '../../../config/Constant';
 
 const Signin:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
   
@@ -12,16 +12,13 @@ const Signin:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
 
   const onSubmit = async (e : React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    let {data} = await axios.post(`${GlobalVarialble.url}auth/signin`, JSON.stringify({
+    let {data} = await axios.post(GlobalVarialble.url + '/auth/signin', JSON.stringify({
       'email' : inputEmail.current.value,
       'password' : inputPassword.current.value,
-    },),);
-
+      },));
+    
     if(data['status'] === '200'){
-      localStorage.setItem('email', data['body']['email']);
-      localStorage.setItem('full_name', data['body']['full_name']);
-      localStorage.setItem('address', data['body']['address']);
-      localStorage.setItem('user_id', data['body']['id']);
+      localStorage.setItem('token', data['body']);
       window.location.reload();
     }else {
       alert(data['status']);

@@ -3,7 +3,7 @@ import { CloseIcon } from '../../../components/icons/close-icon';
 import CustomInput from '../../../components/ui/authInput/CustomInput';
 import { AuthProps } from '../../../types';
 import axios from 'axios';
-import GlobalVarialble from '../../../config/constants/Constant';
+import GlobalVarialble from '../../../config/Constant';
 
 
 const Signup:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
@@ -24,10 +24,7 @@ const Signup:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
       }));
 
       if(data['status'] === 200) {
-        localStorage.setItem('full_name', data['body']['full_name']);
-        localStorage.setItem('email', data['body']['email']);
-        localStorage.setItem('address', data['body']['address']);
-        localStorage.setItem('user_id', data['body']['id']);
+        alert("Register Succecc, Try to login now");
         window.location.reload();
       }
     }else {
