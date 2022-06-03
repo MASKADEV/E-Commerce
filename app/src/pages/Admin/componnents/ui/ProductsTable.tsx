@@ -1,23 +1,9 @@
 import React from 'react'
-import OrdersIcon from '../../../../components/icons/orders-icon'
 import { ProductsTableProps } from '../../../../types'
 
-const ProductsTable:React.FC<ProductsTableProps> = ({products, loading}) => {
+const ProductsTable:React.FC<ProductsTableProps> = ({products, showForm, setShowForm}) => {
   return (
     <div className="px-4 sm:px-6 lg:px-8 text-white">
-      <div className="sm:flex sm:items-center">
-        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button
-            type="button"
-            className="py-3 px-3 bg-main-color hover:bg-white text-white hover:text-main-color font-medium duration-300 rounded-md"
-          >
-            <div className='flex flex-row items-center'>
-              <OrdersIcon className='h-5 w-5 mx-1'/>
-              <h1 className='mx-1'>Add Product</h1>
-            </div>
-          </button>
-        </div>
-      </div>
       <div className="mt-8 flex flex-col">
         <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -58,10 +44,10 @@ const ProductsTable:React.FC<ProductsTableProps> = ({products, loading}) => {
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         <div className="text-gray-900">{product.stock}</div>
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${product.sale}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${product.price}</td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <div className='flex md:flex-row flex-col justify-end'>
-                          <button className="text-white hover:text-main-color mx-3 font-medium">
+                          <button onClick={(e:React.MouseEvent<HTMLButtonElement>) => {e.preventDefault(); setShowForm(!showForm)}} className="text-white hover:text-main-color mx-3 font-medium">
                             Edit
                           </button>
                           <button className="text-white hover:text-red-600 mx-3 font-medium">
