@@ -3,6 +3,8 @@ import axios from 'axios';
 import ProductsTable from '../componnents/ui/ProductsTable';
 import Pagination from '../componnents/navigation/ManagmentPagination';
 import AddProductsForm from '../componnents/ui/AddProductsForm';
+import OrdersIcon from '../../../components/icons/orders-icon';
+import EditProduct from '../componnents/ui/EditProduct';
 
 const Managment:React.FC = () => {
   const [currentPage, setcurrentPage] = useState<number>(1);
@@ -13,7 +15,9 @@ const Managment:React.FC = () => {
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
   const currentProduct = products.slice(indexOfFirstProduct, indexOfLastProduct);
   const paginate = (pageNumber:number) => setcurrentPage(pageNumber);
-
+  const [productForm, setProductForm] = useState<boolean>(false); 
+  const [editproductForm, setEditProductForm] = useState<boolean>(false); 
+  
   useEffect(() => {
     let fetchproducts = async () => {
       setLoading(true);
@@ -33,10 +37,24 @@ const Managment:React.FC = () => {
   
   
   return (
-    <div>
+    <div className='relative'>
       <br className='mb-11'/>
-      <AddProductsForm/>
-      <ProductsTable products={currentProduct} loading={isLoading}/>
+      <div className="sm:flex sm:items-center md:flex hidden">
+        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+          <button
+            type="button"
+            className="py-3 px-3 bg-main-color hover:bg-white text-white hover:text-main-color font-medium duration-300 rounded-md"
+          >
+            <div onClick={(e: React.MouseEvent<HTMLDivElement>) => {e.preventDefault(); setProductForm(!productForm)}} className='flex flex-row items-center'>
+              <OrdersIcon className='h-5 w-5 mx-1'/>
+              <h1 className='mx-1'>Add Product</h1>
+            </div>
+          </button>
+        </div>
+      </div>
+      <EditProduct showForm={editproductForm} setShowForm={setEditProductForm}/>
+      <AddProductsForm showForm={productForm} setShowForm={setProductForm} />
+      <ProductsTable showForm={editproductForm} setShowForm={setEditProductForm} products={currentProduct} loading={isLoading}/>
       <Pagination productPerPage={productPerPage} products={products.length} paginate={paginate}/>
     </div>
   )
