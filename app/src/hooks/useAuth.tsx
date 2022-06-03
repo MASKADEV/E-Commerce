@@ -1,9 +1,7 @@
-import React from "react";
-
 
 let useAuth = () => {
-    let isLogedin = localStorage.getItem('full_name');
-    if(isLogedin) {
+    let token = localStorage.getItem('token');
+    if(token) {
         return true;
     }
     return false;
