@@ -63,10 +63,26 @@ export interface AnalyticsCardProps {
 
 export interface ProductsTableProps{
     products : Array<any>,
-    loading : boolean
+    loading : boolean,
+    showForm : boolean,
+    setShowForm : React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface SupportProps {
     page : string,
     setpage: React.SetStateAction<any>,
 }
+
+export interface ProductFormProps {
+    showForm : boolean,
+    setShowForm : React.Dispatch<React.SetStateAction<boolean>>
+  }
+  
+export interface ProductsForm {
+    title : string,
+    description : string,
+    stock : number,
+    price : number,
+    image_url : any,
+    categories : string
+  }
