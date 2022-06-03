@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import PageNotFound from './pages/404';
 import Profile from './pages/Profile';
-// import { Provider } from 'react-redux';
-// import store from './store/store';
 import Layout from './components/commun/Layouts';
 import Dashboard from './pages/Admin/Dashboard';
 import FAQ from './pages/Support/faq/FAQ';
