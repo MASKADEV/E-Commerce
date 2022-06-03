@@ -1,4 +1,3 @@
-import React from 'react';
 import ProductCard from '../../components/ui/cards/ProductCard';
 
 const Home = () => {
