@@ -35,7 +35,7 @@ const CategoriesManagment:React.FC<props> = ({show, setShow}) => {
                 </div>
             </form>
             <div>
-            {fetchCategories()}
+            {/* {fetchCategories()} */}
             </div>
         </div>
     </div>
