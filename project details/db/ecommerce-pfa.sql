@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.3.0-dev+20220528.cc1733a80d
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 29, 2022 at 06:23 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.1.4
+-- Host: 127.0.0.1
+-- Generation Time: Jun 07, 2022 at 02:13 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `title`, `description`, `created_at`) VALUES
-(3, 't-shirts 2022', 't-shirt for you', '2022-05-11 08:54:11');
+(4, 'T-shirts', 'trending T-shirts', '2022-06-01 22:07:48'),
+(5, 'Jeans', 'trending Jeans', '2022-06-01 22:07:48'),
+(6, 'Perfum', 'trending Perfum', '2022-06-01 22:07:48');
 
 -- --------------------------------------------------------
 
@@ -74,12 +76,20 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
   `description` varchar(150) NOT NULL,
-  `mark` varchar(50) NOT NULL,
+  `categories_id` int(11) NOT NULL,
   `image_url` varchar(200) DEFAULT NULL,
   `stock` int(11) NOT NULL,
-  `sale` double DEFAULT NULL,
+  `price` double DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `title`, `description`, `categories_id`, `image_url`, `stock`, `price`, `created_at`) VALUES
+(33, 'sdf', 'sdf', 6, 'https://offautan-uc1.azureedge.net/-/media/images/off/ph/products-en/products-landing/landing/off_overtime_product_collections_large_2x.jpg', 32423, 234, '2022-06-03 15:30:19'),
+(34, 'rwer', 'wer', 6, 'https://offautan-uc1.azureedge.net/-/media/images/off/ph/products-en/products-landing/landing/off_overtime_product_collections_large_2x.jpg', 23, 24, '2022-06-03 15:32:29');
 
 -- --------------------------------------------------------
 
@@ -116,8 +126,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `full_name`, `address`, `email`, `password`, `role`, `created_at`) VALUES
-(15, 'maska', 'none', 'maska@maska.com', 'maskamaska', 0, '2022-05-23 08:43:08'),
-(16, 'hola', 'none', 'maska04@maska.com', 'maskamaska', 0, '2022-05-27 14:33:33');
+(19, 'maska', 'el hana 1, 574, Morocco, 40000', 'maska@maska.com', 'maskamaska', 1, '2022-05-30 09:13:33');
 
 -- --------------------------------------------------------
 
@@ -154,7 +163,8 @@ ALTER TABLE `categories`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `categories_id` (`categories_id`);
 
 --
 -- Indexes for table `users`
@@ -178,24 +188,31 @@ ALTER TABLE `user_archive`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
