@@ -97,15 +97,16 @@ class AdminController {
         require_once('src/models/admin/gestionProducts.php');
         $gp = new GestionProducts();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $title = $_POST['title'];
-            $description = $_POST['description'];
-            $image_url = $_POST['image_url'];
-            $mark = $_POST['mark'];
-            $stock = $_POST['stock'];
-            $price = $_POST['price'];
-            if(!empty($title) && !empty($description) && !empty($image_url) && !empty($mark) && !empty($stock) && !empty($price))
+            $data = json_decode(file_get_contents("php://input"));
+            $title = $data->title;
+            $description = $data->description;
+            $image_url = $data->image_url;
+            $categories = $data->categories;
+            $stock = $data->stock;
+            $price = $data->price;
+            if(!empty($title) && !empty($description) && !empty($image_url) && !empty($categories) && !empty($stock) && !empty($price))
             {
-                $gp->addProducts($title, $description, $image_url, $mark, $stock, $price);
+                $gp->addProducts($title, $description, $image_url, 6, $stock, $price);
                 echo AdminController::message('products has been Added!', false);
             }else {
                 echo AdminController::message('please fill all field', true);
@@ -129,9 +130,10 @@ class AdminController {
             $mark = $_POST['mark'];
             $stock = $_POST['stock'];
             $price = $_POST['price'];
+            $id = $_POST['id'];
             if(!empty($title) && !empty($description) && !empty($image_url) && !empty($mark) && !empty($stock) && !empty($price))
             {
-                $gp->editProducts($title, $description, $image_url, $mark, $stock, $price);
+                $gp->editProducts($id, $title, $description, $image_url, $mark, $stock, $price);
                 echo AdminController::message('products has been Added!', false);
             }else {
                 echo AdminController::message('please fill all field', true);

@@ -54,7 +54,7 @@ const Dashboard = () => {
   
 
   return (
-    <div className='flex flex-col w-screen'>
+    <div className='flex flex-col w-screen pt-[6rem]'>
       <div className='text-white w-full'>
         <DashboardNavBar switchMenu={switchMenu} setswitchMenu={setswitchMenu}/>
       </div>

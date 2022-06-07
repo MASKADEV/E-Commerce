@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import NavBar from '../ui/navigation/NavBar';
-import SideBar from '../ui/navigation/SideBar';
 import AddToCart from '../ui/addToCart/AddToCart';
 import Authentication from '../../pages/authentication';
 
@@ -18,8 +17,7 @@ export default function Layout({ children } : any) {
         {showAuth && <Authentication showAuth={showAuth} setAuth={setAuth} /> }
       </header>
       <div className='flex flex-row'>
-        {/* <SideBar /> */}
-        <article className='mt-24'>{children}</article>
+        <article >{children}</article>
       </div>
     </main>
   )

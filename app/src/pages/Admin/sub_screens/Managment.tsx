@@ -5,6 +5,7 @@ import Pagination from '../componnents/navigation/ManagmentPagination';
 import AddProductsForm from '../componnents/ui/AddProductsForm';
 import OrdersIcon from '../../../components/icons/orders-icon';
 import EditProduct from '../componnents/ui/EditProduct';
+import CategoriesManagment from '../componnents/ui/CategoriesManagment';
 
 const Managment:React.FC = () => {
   const [currentPage, setcurrentPage] = useState<number>(1);
@@ -17,6 +18,7 @@ const Managment:React.FC = () => {
   const paginate = (pageNumber:number) => setcurrentPage(pageNumber);
   const [productForm, setProductForm] = useState<boolean>(false); 
   const [editproductForm, setEditProductForm] = useState<boolean>(false); 
+  const [showCategories, setShowCategories] = useState<boolean>(true); 
   
   useEffect(() => {
     let fetchproducts = async () => {
@@ -40,18 +42,27 @@ const Managment:React.FC = () => {
     <div className='relative'>
       <br className='mb-11'/>
       <div className="sm:flex sm:items-center md:flex hidden">
-        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+        <div className="flex flex-row ml-11">
           <button
             type="button"
-            className="py-3 px-3 bg-main-color hover:bg-white text-white hover:text-main-color font-medium duration-300 rounded-md"
+            className="py-3 px-3 mr-1 bg-main-color hover:bg-white text-white hover:text-main-color font-medium duration-300 rounded-md"
           >
             <div onClick={(e: React.MouseEvent<HTMLDivElement>) => {e.preventDefault(); setProductForm(!productForm)}} className='flex flex-row items-center'>
               <OrdersIcon className='h-5 w-5 mx-1'/>
               <h1 className='mx-1'>Add Product</h1>
             </div>
           </button>
+          <button
+            type="button"
+            className="py-3 px-3 ml-1 bg-white hover:bg-main-color text-main-color hover:text-white font-medium duration-300 rounded-md"
+          >
+            <div onClick={(e: React.MouseEvent<HTMLDivElement>) => {e.preventDefault(); setShowCategories(!showCategories)}} className='flex flex-row items-center'>
+              <h1 className='mx-1'>Manage Categories</h1>
+            </div>
+          </button>
         </div>
       </div>
+      <CategoriesManagment show={showCategories} setShow={setShowCategories}/>
       <EditProduct showForm={editproductForm} setShowForm={setEditProductForm}/>
       <AddProductsForm showForm={productForm} setShowForm={setProductForm} />
       <ProductsTable showForm={editproductForm} setShowForm={setEditProductForm} products={currentProduct} loading={isLoading}/>

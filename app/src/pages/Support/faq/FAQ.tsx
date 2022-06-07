@@ -1,45 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const FAQ:React.FC = () => {
 
   return (
-    <div className='flex flex-row items-center w-screen'>
-      <div className='md:w-[30rem]'>
-      </div>
-        <div className='md:mt-4 mt-3'>
-          <div className='text-center'>
-              <h1 className='md:text-3xl text-xl text-gray font-bold text-center'>FAQ</h1>
-              <p className='md:text-md text-sm text-gray font-medium text-center mt-3'>Last updated on May 20, 2022</p>
-          </div>
-          <section className="relative py-7 min-w-screen animation-fade animation-delay">
-            <div className="container px-8 mx-auto sm:px-12 xl:px-5">
-                <div className="w-full px-6 py-6 mx-auto mt-4 bg-navBar-bg text-white rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3">
-                    <h3 className="text-lg font-bold text-main-color sm:text-xl md:text-2xl">How to Contact Cutomer Service?</h3>
-                    <p className="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
-                    Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.
-                    </p>
-                </div>
-                <div className="w-full px-6 py-6 mx-auto mt-10 bg-navBar-bg text-white rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3">
-                    <h3 className="text-lg font-bold text-main-color sm:text-xl md:text-2xl">Do you offer team pricing?</h3>
-                    <p className="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
-                        Yes, we do! Team pricing is available for any plan. You can take advantage of 30% off for signing up for team pricing of 10 users or more.
-                    </p>
-                </div>
-                <div className="w-full px-6 py-6 mx-auto mt-10 bg-navBar-bg text-white rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3">
-                    <h3 className="text-lg font-bold text-main-color sm:text-xl md:text-2xl">How do I make changes and configure my site?</h3>
-                    <p className="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
-                        You can easily change your site settings inside of your site dashboard by clicking the top right menu and clicking the settings button.
-                    </p>
-                </div>
-                <div className="w-full px-6 py-6 mx-auto mt-10 bg-navBar-bg text-white rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3">
-                    <h3 className="text-lg font-bold text-main-color sm:text-xl md:text-2xl">How do I add a custom domain?</h3>
-                    <p className="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
-                        You can easily change your site settings inside of your site dashboard by clicking the top right menu and clicking the settings button.
-                    </p>
-                </div>
-            </div>
-        </section>
-        </div>
+    <div className='flex flex-row items-center justify-center w-screen pt-[5rem] text-white'>
+    <section className="dark:bg-gray-800 dark:text-gray-100">
+	<div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
+		<h2 className="text-2xl font-semibold sm:text-4xl">Frequently Asked Questions</h2>
+		<p className="mt-4 mb-8 dark:text-gray-400">Sagittis tempor donec id vestibulum viverra. Neque condimentum primis orci at lacus amet bibendum.</p>
+		<div className="space-y-4">
+			<details className="w-full border rounded-lg">
+				<summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">Ex orci laoreet egestas sapien magna egestas scelerisque?</summary>
+				<p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">Lectus iaculis orci metus vitae ligula dictum per. Nisl per nullam taciti at adipiscing est. </p>
+			</details>
+			<details className="w-full border rounded-lg">
+				<summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">Lorem at arcu rutrum viverra metus sapien venenatis lobortis odio?</summary>
+				<p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">Tincidunt ut hac condimentum rhoncus phasellus nostra. Magna porttitor egestas tincidunt neque vehicula potenti. </p>
+			</details>
+			<details className="w-full border rounded-lg">
+				<summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">Eleifend feugiat sollicitudin laoreet adipiscing bibendum suscipit erat?</summary>
+				<p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">Justo libero tellus integer tincidunt justo semper consequat venenatis aliquet imperdiet. Ultricies urna proin fusce nulla pretium sodales vel magna et massa euismod vulputate sed. </p>
+			</details>
+		</div>
+	</div>
+    </section>
     </div>
   )
 }
