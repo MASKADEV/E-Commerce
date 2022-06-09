@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductCard from '../../../components/ui/cards/ProductCard'
+import ProductCard from '../../../../components/ui/cards/ProductCard'
 
 const TrendingProducts = () => {
     return (
