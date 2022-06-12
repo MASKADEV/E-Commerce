@@ -1,7 +1,16 @@
+import axios from 'axios'
 import React from 'react'
+import GlobalVarialble from '../../../../config/Constant'
 import { ProductsTableProps } from '../../../../types'
 
-const ProductsTable:React.FC<ProductsTableProps> = ({products, showForm, setShowForm}) => {
+const ProductsTable:React.FC<ProductsTableProps> = ({setdata,products, showForm, setShowForm}) => {
+
+  const deleteProduct = async (id?:number, productName?: string) => {
+    await axios.post(GlobalVarialble.url + '/admin/deleteProducts', {id});
+    alert('Product ' + productName + ' has been deletet')
+    window.location.reload();
+  }
+  
   return (
     <div className="px-4 sm:px-6 lg:px-8 text-white">
       <div className="mt-8 flex flex-col">
@@ -29,8 +38,8 @@ const ProductsTable:React.FC<ProductsTableProps> = ({products, showForm, setShow
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 ">
-                  {products.map((product) => (
-                    <tr key={product.title}>
+                  {products.map((product, index) => (
+                    <tr key={index}>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                         <div className="flex items-center">
                           <div className="h-10 w-10 flex-shrink-0">
@@ -47,10 +56,10 @@ const ProductsTable:React.FC<ProductsTableProps> = ({products, showForm, setShow
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${product.price}</td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <div className='flex md:flex-row flex-col justify-end'>
-                          <button onClick={(e:React.MouseEvent<HTMLButtonElement>) => {e.preventDefault(); setShowForm(!showForm)}} className="text-white hover:text-main-color mx-3 font-medium">
+                          <button onClick={(e:React.MouseEvent<HTMLButtonElement>) => {e.preventDefault(); setdata(product);setShowForm(!showForm)}} className="text-white hover:text-main-color mx-3 font-medium">
                             Edit
                           </button>
-                          <button className="text-white hover:text-red-600 mx-3 font-medium">
+                          <button onClick={() => {deleteProduct(product.id, product.title)}} className="text-white hover:text-red-600 mx-3 font-medium">
                             Delete
                           </button>
                         </div>

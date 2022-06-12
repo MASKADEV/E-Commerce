@@ -3,20 +3,19 @@ import { useForm } from 'react-hook-form';
 import { DropArrow } from '../../../../components/icons/chevron-down-outline';
 
 interface editproductprops {
+    data? : any,
     showForm : boolean,
     setShowForm : React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const EditProduct:React.FC<editproductprops> = ({showForm,setShowForm}) => {
+const EditProduct:React.FC<editproductprops> = ({data,showForm,setShowForm}) => {
     const  {register, handleSubmit} = useForm();
-
-    const submit = (data : any) => {
-        console.log('maska');
-        
+    const submit = (formdata : any) => {
+      console.log(formdata);
     }
 
     useEffect(() => {
-        console.log('maska');
+      
     }, [])
     
 

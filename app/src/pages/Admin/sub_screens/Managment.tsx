@@ -18,7 +18,15 @@ const Managment:React.FC = () => {
   const paginate = (pageNumber:number) => setcurrentPage(pageNumber);
   const [productForm, setProductForm] = useState<boolean>(false); 
   const [editproductForm, setEditProductForm] = useState<boolean>(false); 
-  const [showCategories, setShowCategories] = useState<boolean>(true); 
+  const [showCategories, setShowCategories] = useState<boolean>(false); 
+  const [productsData, setProductsData] = useState<any>({
+    'title' : '',
+    'description' : "",
+    'categories' : "",
+    'stock' : "",
+    'price' : "",
+    'image_url' : "",
+  });
   
   useEffect(() => {
     let fetchproducts = async () => {
@@ -63,9 +71,9 @@ const Managment:React.FC = () => {
         </div>
       </div>
       <CategoriesManagment show={showCategories} setShow={setShowCategories}/>
-      <EditProduct showForm={editproductForm} setShowForm={setEditProductForm}/>
+      <EditProduct data={productsData}  showForm={editproductForm} setShowForm={setEditProductForm}/>
       <AddProductsForm showForm={productForm} setShowForm={setProductForm} />
-      <ProductsTable showForm={editproductForm} setShowForm={setEditProductForm} products={currentProduct} loading={isLoading}/>
+      <ProductsTable setdata={setProductsData} showForm={editproductForm} setShowForm={setEditProductForm} products={currentProduct} loading={isLoading}/>
       <Pagination productPerPage={productPerPage} products={products.length} paginate={paginate}/>
     </div>
   )
