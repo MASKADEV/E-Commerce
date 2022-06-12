@@ -5,13 +5,15 @@ import { ProductIcon } from '../../icons/product-icon';
 import NavigationLink from '../links/NavigationLink';
 
 interface props {
+
   currentPage: string,
   setcurrentPage : React.SetStateAction<any>,
+
 }
 
 const SideBar:React.FC<props> = ({currentPage, setcurrentPage}) => {
   return (
-   <div className='md:w-[20rem] md:h-full h-[5rem] md:z-0 z-20 w-full bg-sideBar-bg overflow-y-hidden md:top-0 bottom-0 md:static fixed flex flex-col justify-between'>
+   <div className='md:w-[20rem] md:h-full h-[5rem] md:z-0 z-20 w-full bg-sideBar-bg overflow-y-hidden md:top-0 bottom-0 fixed flex flex-col justify-between'>
         <nav className=' text-white flex md:flex-col flex-row md:items-start items-center md:mt-[6rem] first-letter:items-center h-full md:justify-start justify-between md:mx-0 md:px-0 px-4'>
           <div className='flex flex-row items-center md:mr-[2rem] mr-1 md:h-[3rem] md:hover:bg-hover-bg md:w-full'>
             <HomeIcon className='md:mr-5 mr-2 md:ml-[2rem] md:h-[20px] h-[25px]'/>
