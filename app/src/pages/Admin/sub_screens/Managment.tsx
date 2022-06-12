@@ -11,7 +11,7 @@ import GlobalVarialble from '../../../config/Constant';
 const Managment:React.FC = () => {
   const [currentPage, setcurrentPage] = useState<number>(1);
   const [isLoading, setLoading] = useState<any>(false);
-  const [productPerPage] = useState<number>(5);
+  const [productPerPage] = useState<number>(10);
   const [products, setproducts] = useState<any>([{}]);
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
