@@ -9,6 +9,7 @@ import Dashboard from './pages/Admin/Dashboard';
 import FAQ from './pages/Support/faq/FAQ';
 import Terms from './pages/Support/terms/Terms';
 import Help from './pages/Support/help/Help';
+import ProductDetails from './pages/product_page/product_details';
 
 const  App:React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const  App:React.FC = () => {
         <Route path='/home' element={<Layout>{ <Home/>}</Layout>}/>
         <Route path='/admin' element={<Layout>{ <Dashboard/>}</Layout>}/>
         <Route path='/faq' element={<Layout>{ <FAQ/>}</Layout>}/>
+        <Route path='/product_detail/:id' element={<Layout>{ <ProductDetails />}</Layout>}/>
         <Route path='/terms' element={<Layout>{ <Terms/>}</Layout>}/>
         <Route path='/help' element={<Layout>{ <Help/>}</Layout>}/>
         <Route path='/profile' element={<Layout>{ <Profile /> }</Layout>}/>

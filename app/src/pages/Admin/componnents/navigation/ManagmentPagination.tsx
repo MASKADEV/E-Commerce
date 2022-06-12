@@ -16,7 +16,7 @@ const Pagination = ({productPerPage, products, paginate}: props) => {
         <ul className='flex flex-row items-center justify-center'>
           {
             pageNumber.map((number:any, index) => (
-                <li className='mx-3 text-center rounded-md bg-navBar-bg shadow-sm font-medium'>
+                <li key={index} className='mx-3 text-center rounded-md bg-navBar-bg shadow-sm font-medium'>
                 <button className='px-3 py-3 w-[3rem]' onClick={() =>{paginate(number)}}>{number}</button>
                 </li>
             ))
