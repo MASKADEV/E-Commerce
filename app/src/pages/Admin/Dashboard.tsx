@@ -45,8 +45,8 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    CheckAuth();
-  },[])
+    CheckAuth();  
+  }, [])
 
   useEffect(() => {
     loadpage(switchMenu);
