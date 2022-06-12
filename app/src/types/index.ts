@@ -19,6 +19,7 @@ export interface AuthProps {
 }
 
 export interface ProductsProps {
+    id : number,
     title : string,
     categorie : string,
     price : number,
@@ -62,6 +63,7 @@ export interface AnalyticsCardProps {
 }
 
 export interface ProductsTableProps{
+    setdata : any,
     products : Array<any>,
     loading : boolean,
     showForm : boolean,
