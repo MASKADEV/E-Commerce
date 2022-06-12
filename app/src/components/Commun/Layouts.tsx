@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import NavBar from '../ui/navigation/NavBar';
-import AddToCart from '../ui/addToCart/AddToCart';
 import Authentication from '../../pages/authentication';
+import AddToCart from '../ui/AddToCart/AddToCart';
+import NavBar from '../ui/Navigation/NavBar';
 
 export default function Layout({ children } : any) {
 

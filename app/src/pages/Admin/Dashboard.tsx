@@ -9,7 +9,7 @@ import GlobalVarialble from '../../config/Constant';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   const [switchMenu, setswitchMenu] = useState<string>('managment');
   
   const loadpage = (page : string) => {

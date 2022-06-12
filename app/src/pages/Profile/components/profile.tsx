@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import EditIcon from '../../../components/icons/edit-icon';
-import ProfileInput from '../../../components/ui/profileInput/ProfileInput';
+import ProfileInput from '../../../components/ui/ProfileInput/ProfileInput';
 import GlobalVarialble from '../../../config/Constant';
 import useAuth from '../../../hooks/useAuth';
 

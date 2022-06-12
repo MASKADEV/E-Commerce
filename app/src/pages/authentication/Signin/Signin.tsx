@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { CloseIcon } from '../../../components/icons/close-icon';
-import CustomInput from '../../../components/ui/authInput/CustomInput';
 import { AuthProps } from '../../../types';
 import axios from 'axios';
 import GlobalVarialble from '../../../config/Constant';
+import CustomInput from '../../../components/ui/AuthInput/customInput';
 
 const Signin:React.FC<AuthProps> = ({show, setShow, showAuth, setAuth}) => {
   

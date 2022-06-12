@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SideBar from '../../components/ui/navigation/SideBar';
+import SideBar from '../../components/ui/Navigation/SideBar';
 import ExploreProducts from './components/pages/explore_products';
 import LatestProducts from './components/pages/latest_products';
 import TrendingProducts from './components/pages/trending_products';

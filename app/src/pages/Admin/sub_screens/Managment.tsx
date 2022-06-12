@@ -6,6 +6,7 @@ import AddProductsForm from '../componnents/ui/AddProductsForm';
 import OrdersIcon from '../../../components/icons/orders-icon';
 import EditProduct from '../componnents/ui/EditProduct';
 import CategoriesManagment from '../componnents/ui/CategoriesManagment';
+import GlobalVarialble from '../../../config/Constant';
 
 const Managment:React.FC = () => {
   const [currentPage, setcurrentPage] = useState<number>(1);
@@ -32,7 +33,7 @@ const Managment:React.FC = () => {
     let fetchproducts = async () => {
       setLoading(true);
       try{
-        let url = 'http://localhost/ecommercefillrouge/rest-api/admin/fetchProducts';
+        let url = GlobalVarialble.url + '/admin/fetchProducts';
         await axios.get(url).then((response : any) => {
           setproducts(response.data)
         });

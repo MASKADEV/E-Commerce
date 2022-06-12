@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import PageNotFound from './pages/404';
 import Profile from './pages/Profile';
-import Layout from './components/commun/Layouts';
 import Dashboard from './pages/Admin/Dashboard';
 import FAQ from './pages/Support/faq/FAQ';
 import Terms from './pages/Support/terms/Terms';
 import Help from './pages/Support/help/Help';
 import ProductDetails from './pages/product_page/product_details';
+import Layout from './components/Commun/Layouts';
 
 const  App:React.FC = () => {
   return (

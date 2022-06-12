@@ -2,7 +2,7 @@ import React from 'react';
 import { DiscoverIcon } from '../../icons/discover-icon';
 import { HomeIcon } from '../../icons/home-icon';
 import { ProductIcon } from '../../icons/product-icon';
-import NavigationLink from '../links/NavigationLink';
+import NavigationLink from '../Links/NavigationLink';
 
 interface props {
 
