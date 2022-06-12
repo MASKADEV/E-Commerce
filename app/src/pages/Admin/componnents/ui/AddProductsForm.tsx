@@ -21,7 +21,7 @@ const AddProductsForm:React.FC<ProductFormProps> = ({showForm, setShowForm}) => 
       let {data} = await axios.get(GlobalVarialble.url + '/admin/fetchCategories',);
       setcategories(data);
     }
-
+    let percentage = 100;
   useEffect(() => {
     fetchCategories();
   }, [showForm])
@@ -141,8 +141,11 @@ const AddProductsForm:React.FC<ProductFormProps> = ({showForm, setShowForm}) => 
             <input type='submit' className='cursor-pointer bg-main-color px-5 py-2 text-white mx-3 rounded font-medium' placeholder='Add Product'/>
             <button onClick={(e:React.MouseEvent<HTMLButtonElement>) => {e.preventDefault();setShowForm(!showForm)}} className='text-gray mx-3 font-medium'>Cancel</button>
           </div> :
-          <p className='text-white font-medium'>{percent} "% Done"</p>
+          <div className='text-main-color'>
+            {percent}% Uploaded
+          </div>
         }
+
       </div>
         
       </form>
