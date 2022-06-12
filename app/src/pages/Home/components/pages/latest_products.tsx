@@ -29,7 +29,7 @@ const LatestProducts = () => {
 
   const showMore = (e : React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setvisible(visible + 3)
+    setvisible(visible + 6)
   }
 
     return (
