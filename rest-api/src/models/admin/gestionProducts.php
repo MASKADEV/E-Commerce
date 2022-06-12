@@ -30,7 +30,7 @@ class GestionProducts {
     public function fetchProducts(){
         require_once('src/models/connection.php');
         $db = new Database();
-        return $db->selectAll('products');
+        return $db->fetchAllProducts();
     }
     
 }

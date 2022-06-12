@@ -12,9 +12,9 @@ class GestionCategories{
     public function editCategories($id, $title, $description){
         require_once('src/models/connection.php');
         $db = new Database();
-        $str = "UPDATE `categories` SET `title`=?,`description`=? WHERE $id";
+        $str = "UPDATE `categories` SET `title`=?,`description`=? WHERE id=?";
         $query = $db->connection()->prepare($str);
-        $query->execute([$title, $description]);
+        $query->execute([$title, $description, $id]);
         return $db->selectAll('categories');
     }
 

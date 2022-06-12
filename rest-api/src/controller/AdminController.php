@@ -15,8 +15,10 @@ class AdminController {
         require_once('src/models/admin/gestionCategories.php');
         $gp = new GestionCategories();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $title = $_POST['title'];
-            $description = $_POST['description'];
+            // echo 'maska';die;
+            $data = json_decode(file_get_contents("php://input"));
+            $title = $data->title;
+            $description = 'categories';
             if(!empty($title) && !empty($description))
             {
                 $gp->addCategories($title, $description);
@@ -37,9 +39,10 @@ class AdminController {
         require_once('src/models/admin/gestionCategories.php');
         $gp = new GestionCategories();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $title = $_POST['title'];
-            $description = $_POST['description'];
-            $id = $_POST['id'];
+            $data = json_decode(file_get_contents("php://input"));
+            $id = $data->id;
+            $title = $data->title;
+            $description = 'categories';
             if(!empty($title) && !empty($description) && !empty($id))
             {
                 $result = $gp->editCategories($id, $title, $description);
@@ -60,11 +63,12 @@ class AdminController {
         require_once('src/models/admin/gestionCategories.php');
         $gp = new GestionCategories();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $id = $_POST['id'];
-                $deleted = $gp->deleteCategories($id);
-                if($deleted){
-                    AdminController::message('Categories has been deleted', false);
-                }
+            $data = json_decode(file_get_contents("php://input"));
+            $id = $data->id;
+            $deleted = $gp->deleteCategories($id);
+            if($deleted){
+                AdminController::message('Categories has been deleted', false);
+            }
         }else {
             echo AdminController::message('invalide request', true);
         }
@@ -106,7 +110,7 @@ class AdminController {
             $price = $data->price;
             if(!empty($title) && !empty($description) && !empty($image_url) && !empty($categories) && !empty($stock) && !empty($price))
             {
-                $gp->addProducts($title, $description, $image_url, 6, $stock, $price);
+                $gp->addProducts($title, $description, $image_url, $categories, $stock, $price);
                 echo AdminController::message('products has been Added!', false);
             }else {
                 echo AdminController::message('please fill all field', true);
@@ -151,11 +155,12 @@ class AdminController {
         require_once('src/models/admin/gestionProducts.php');
         $gp = new GestionProducts();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $id = $_POST['id'];
-                $deleted = $gp->deleteProducts($id);
-                if($deleted){
-                    AdminController::message('Products has been deleted', false);
-                }
+            $data = json_decode(file_get_contents("php://input"));
+            $id = $data->id;
+            $deleted = $gp->deleteProducts($id);
+            if($deleted){
+                AdminController::message('Products has been deleted', false);
+            }
         }else {
             echo AdminController::message('invalide request', true);
         }
@@ -169,7 +174,7 @@ class AdminController {
         require_once('src/models/admin/gestionProducts.php');
         $gp = new GestionProducts();
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                $result = $gp->fetchProducts('products');
+                $result = $gp->fetchProducts();
                 echo json_encode($result);
         }else {
             echo AdminController::message('invalide request', true);

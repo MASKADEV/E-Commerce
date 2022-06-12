@@ -40,7 +40,16 @@ class Database
 		return $result;
 	}
 
-	public function delete($table,$id)
+	public function fetchAllProducts(){
+		// return ['title' => 'maska' ]; die;
+		$str = 'SELECT products.*, categories.title AS c_title FROM `products` INNER JOIN categories ON categories.id = products.categories_id';
+		$query = $this->conn->prepare($str);
+		$query->execute();
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+	}
+
+	public function delete($id)
 	{
 		$query=$this->conn->prepare("DELETE FROM users WHERE id=?");
 		return $query->execute([$id]);
