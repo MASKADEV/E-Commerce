@@ -29,12 +29,4 @@ const  App:React.FC = () => {
   );
 }
 
-// const AppWrapper = () => {
-//   return (
-//     <Provider store={store}>
-//       <App />
-//     </Provider>
-//   )
-// }
-
 export default App;
