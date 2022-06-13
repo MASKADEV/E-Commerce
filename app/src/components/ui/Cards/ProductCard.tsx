@@ -2,7 +2,7 @@ import React, { ButtonHTMLAttributes } from 'react'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ProductsProps } from '../../../types'
-import { addItem } from '../../../state_managment/addToCartSlice';
+import { addItem } from '../../../store/features/addToCartSlice';
 
 const ProductCard:React.FC<ProductsProps> = ({title, id,description, image_url, price, categorie}) => {
 
@@ -27,7 +27,7 @@ const ProductCard:React.FC<ProductsProps> = ({title, id,description, image_url, 
                 </div>
             </div>
             <div className='w-full mt-1'>
-                <Link to={`/product_detail/${id}`} ><div className='w-full bg-main-color py-3 text-center rounded-md hover:bg-white hover:text-main-color'>View Details</div>
+                <Link to={`/product_detail/${id}`}><div className='w-full bg-main-color py-3 text-center rounded-md hover:bg-white hover:text-main-color'>View Details</div>
                 </Link>
             </div>
         </div>
