@@ -41,11 +41,19 @@ class Database
 	}
 
 	public function fetchAllProducts(){
-		// return ['title' => 'maska' ]; die;
 		$str = 'SELECT products.*, categories.title AS c_title FROM `products` INNER JOIN categories ON categories.id = products.categories_id';
 		$query = $this->conn->prepare($str);
 		$query->execute();
 		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+	}
+
+	public function fetchSingleProduct($id){
+		// $str = 'SELECT products.*, categories.title AS c_title FROM `products` INNER JOIN categories ON categories.id = products.categories_id WHERE id=?';
+		// $query = $this->conn->prepare($str);
+		$query=$this->conn->prepare("SELECT * FROM products WHERE id=?");
+		$query->execute([$id]);
+		$result = $query->fetch(PDO::FETCH_ASSOC);
 		return $result;
 	}
 

@@ -182,6 +182,24 @@ class AdminController {
         }
     }
 
+    public function fetchSingleProduct(){
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+        require_once('src/config/Header.php');
+        require_once('src/models/admin/gestionProducts.php');
+        $data = json_decode(file_get_contents("php://input"));
+        $id = $data->id;
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // echo 'hola' . $id;die;
+            $gp = new GestionProducts();
+            $result = $gp->fetchSingleProduct($id);
+            echo json_encode($result);
+        }else {
+            echo AdminController::message('invalide request', true);
+        }
+    }
+
     public static function message($content, $status) {
 	    return json_encode(array(
             'message' => $content, 

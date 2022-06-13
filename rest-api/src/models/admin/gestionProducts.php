@@ -32,5 +32,12 @@ class GestionProducts {
         $db = new Database();
         return $db->fetchAllProducts();
     }
+
+    public function fetchSingleProduct($id){
+        require_once('src/models/connection.php');
+        $db = new Database();
+        // echo $id;die;
+        return $db->fetchSingleProduct($id);
+    }
     
 }
