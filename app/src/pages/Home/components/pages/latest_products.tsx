@@ -12,10 +12,7 @@ const LatestProducts = () => {
     try{
       let url = GlobalVarialble.url + '/admin/fetchProducts';
       await axios.get(url).then((response : any) => {
-        
-        console.log(response.data);
         setproducts(response.data);
-
       });
     }catch(err)
     {
@@ -34,14 +31,13 @@ const LatestProducts = () => {
 
     return (
         <div className='flex flex-col mx-auto items-center w-full'>
-          <div className=' md:grid md:grid-cols-2 mx-auto xl:grid-cols-3 md:gap-5 mb-3'>
+          <div className=' md:grid md:grid-cols-2 mx-auto xl:grid-cols-4 md:gap-5 mb-3'>
             {products.slice(0,visible).map((product:any, index : number) => (
                 <ProductCard key={index} id={product['id']} categorie={product['c_title']} title={product['title']} price={product['price']} image_url={product['image_url']} />
             ))}
           </div>
           {products.length > 6 && <button onClick={showMore} className=' duration-150 my-2 bg-main-color hover:bg-white text-white hover:text-main-color px-5 py-3 rounded-md w-[10rem]'>Load More</button>}
         </div>
-        
     )
 }
 
