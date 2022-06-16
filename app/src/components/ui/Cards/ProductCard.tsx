@@ -1,16 +1,12 @@
-import React, { ButtonHTMLAttributes } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { ProductsProps } from '../../../types'
-import { addItem } from '../../../store/features/addToCartSlice';
 
 const ProductCard:React.FC<ProductsProps> = ({title, id,description, image_url, price, categorie}) => {
 
-    const dispatch = useDispatch();
-    const addtoCart = (e : React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        dispatch(addItem({'title' : title, 'id':id, 'image' : image_url, 'category' : categorie, 'price' : price, 'quantity' : 3}));
-    }
+
+
+
 
   return (
         <div className="relative flex flex-col text-white p-4 md:ml-3 items-center overflow-hidden">
