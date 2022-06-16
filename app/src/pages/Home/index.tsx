@@ -9,6 +9,7 @@ const Home = () => {
 
   const [currentPage, setcurrentPage] = useState<string>('latestProducts');
 
+  
   const fetchCurrentPage = () => {
     switch (currentPage) {
       case 'latestProducts':
@@ -29,8 +30,10 @@ const Home = () => {
       <div>
         {fetchCurrentPage()}
       </div>
+      {/* {showSearch.value === true ? <SearchPage /> : <div></div> } */}
     </div>
   )
+
 }
 
 export default Home
