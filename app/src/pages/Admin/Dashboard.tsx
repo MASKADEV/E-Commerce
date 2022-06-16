@@ -41,11 +41,12 @@ const Dashboard: React.FC = () => {
       if(data['role'] === 0){
         return navigate('/', {replace : true});
       }
-    } 
+    }
   }
 
   useEffect(() => {
     CheckAuth();  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
