@@ -15,9 +15,9 @@ const NavBar:React.FC<navBarProps> = ({showProfile, setProfile, showPanier, setS
         <div className='md:px-[7rem] px-10 mx-auto flex flex-row justify-between items-center h-full'>
           <Link to="/" className=' cursor-pointer md:text-2xl font-bold text-main-color'>BRAND.</Link>
           <nav className='md:w-[30%] w-[70%] flex flex-row justify-end items-center'>
-            <button  className='md:mr-[1rem] mr-3'>
+            <Link to='/search'  className='md:mr-[1rem] mr-3'>
               <SearchIcon className='md:h-[20px] h-[25px]'/>
-            </button>
+            </Link>
             <button onClick={() => {setShowPanier(!showPanier)}} className='md:mr-[4rem] mr-[2rem]'>
               <EmptyCartIcon className='md:h-[20px] h-[25px]' />
             </button>
