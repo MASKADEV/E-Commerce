@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import addToCartReducer from './features/addToCartSlice';
+import showSearchReducer from './features/searchSlice';
 
 
 export const store = configureStore({
   reducer: {
     addToCart : addToCartReducer,
+    showSearch : showSearchReducer,
   },
 })
 

@@ -1,7 +1,10 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { deleteItem } from '../../../store/features/addToCartSlice';
 import { CloseIcon } from '../../icons/close-icon'
 
 interface props {
+    index : number,
     title? : string,
     price? : number,
     id? : number,
@@ -10,12 +13,19 @@ interface props {
     quantity? : number,
 }
 
-const addToCartCard:React.FC<props> = ({id, title, category, quantity, image, price}) => {
+const addToCartCard:React.FC<props> = ({id, index,title, category, quantity, image, price}) => {
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const dispatch = useDispatch();
+    const deleteCard = (i : number) => {
+        dispatch(deleteItem(i));
+    }
+
   return (
     <>
         <div className='flex flex-row text-white w-full items-center mt-3'>
             <div>
-                <CloseIcon className='h-[1rem] w-[1rem] mx-3'/>
+                <CloseIcon onClick={(e:React.MouseEvent<HTMLOrSVGElement>) => {e.preventDefault(); deleteCard(index)}} className=' cursor-pointer h-[1rem] w-[1rem] mx-3'/>
             </div>
             <div className='flex flex-row w-full mr-3'>
                 <div>
@@ -25,9 +35,9 @@ const addToCartCard:React.FC<props> = ({id, title, category, quantity, image, pr
                     <div className='flex flex-col'>
                         <div className='text-white font-medium'>{title}</div>
                         <div className='text-white text-opacity-50 font-sm'>{category}</div>
-                        <div className=' text-white text-opacity-50 font-sm'>300</div>
+                        <div className='text-white text-opacity-70'>Quantity: {quantity}</div>
                     </div>
-                    <p>{price}$</p>
+                    <p className='pr-8'>{price}$</p>
                 </div>
             </div>
         </div>
