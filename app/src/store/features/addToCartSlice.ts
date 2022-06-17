@@ -14,10 +14,14 @@ export const addToCartSlice = createSlice({
         deleteItem : (state : any, action: PayloadAction<any>) => {
             state.value.splice(action.payload, 1); 
         },
-        totalPrice : () => {}
+        totalPrice : () => {},
+        clearPanier : (state : any) => {
+            state.value.clear();
+        }
     }
 })
 
 export const {addItem} =addToCartSlice.actions;
 export const {deleteItem} =addToCartSlice.actions;
+export const {clearPanier} =addToCartSlice.actions;
 export default addToCartSlice.reducer;

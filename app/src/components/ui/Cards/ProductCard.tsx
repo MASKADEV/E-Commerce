@@ -4,10 +4,6 @@ import { ProductsProps } from '../../../types'
 
 const ProductCard:React.FC<ProductsProps> = ({title, id,description, image_url, price, categorie}) => {
 
-
-
-
-
   return (
         <div className="relative flex flex-col text-white p-4 md:ml-3 items-center overflow-hidden">
             <div className='h-[16.5rem] w-[16.5rem] overflow-hidden'>
@@ -28,6 +24,7 @@ const ProductCard:React.FC<ProductsProps> = ({title, id,description, image_url, 
             </div>
         </div>
   )
+
 }
 
 export default ProductCard

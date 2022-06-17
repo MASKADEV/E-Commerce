@@ -5,11 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import AddToCartCard from '../../components/ui/Cards/addToCartCard';
 import GlobalVarialble from '../../config/Constant';
 import { RootState } from '../../store/store';
+import { v4 as uuid } from 'uuid';
+import { ethers } from 'ethers';
 
 const Checkout:React.FC = () => {
 
     const addtocart = useSelector((state: RootState) => state.addToCart.value);
     const [totalPrice, setTotalPrice] = useState<number>(0);
+    const [txs, setTxs] = useState([]);
+    const [error, setError] = useState<string>("");
     let navigate = useNavigate();
 
     //check if checkout is empty
@@ -27,31 +31,58 @@ const Checkout:React.FC = () => {
         ));
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [addtocart])
-
+    
     const orderNow = async ( e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        for(let i = 0; i <= addtocart.length; i++ )
-        {
-           await insertData(addtocart[i])
+        const unique_id = uuid();
+        try {
+
+            startPayment(setTxs, '0.001');
+            // for(let i = 0; i <= addtocart.length; i++ )
+            // {
+            //    await insertData(addtocart[i], unique_id);
+            // }
         }
-        console.log('done 1');
-        
+        catch(e){
+            // console.log(e);   
+        }
+        // window.location.reload();
     }
     
-    const insertData = async (data :any) => {
+    const insertData = async (data :any, id:string) => {
         let token = localStorage.getItem('token');
         const config = {
             headers: {
               Authorization: `Bearer ${token}`,
             },
         };
-       const maska = await axios.post(GlobalVarialble.url + '/user/order', {
-            'product_id' : 57,
-            'order_id' : 2344,
-            'quantity' : 12,
+
+        await axios.post(GlobalVarialble.url + '/user/order', {
+            'product_id' : data['id'],
+            'order_id' : id,
+            'quantity' : data['quantity'],
         }, config);
-        console.log(maska.data);
+
     }
+
+    const startPayment = async (setTxs : any, total  : string) => {
+
+              if (!window.ethereum)
+                throw new Error("No crypto wallet found. Please install it.");
+              await window.ethereum.send("eth_requestAccounts");
+              const provider = new ethers.providers.Web3Provider(window.ethereum);
+              const signer = provider.getSigner();
+              ethers.utils.getAddress('0x883369F2753fF191A30AC9DAB6CE350Ae9cF395C');
+              const tx = await signer.sendTransaction({
+                to: '0x883369F2753fF191A30AC9DAB6CE350Ae9cF395C',
+                value: ethers.utils.parseEther(total)
+              });
+              console.log('maska');
+              console.log(tx);
+            //   setTxs([tx]);
+            //   console.log("tx : " + tx);
+            
+      };
 
   return (
     <>
@@ -74,6 +105,7 @@ const Checkout:React.FC = () => {
                 <hr className=' bg-slate-400 bg-opacity-70 mt-8'/>
                 <button onClick={orderNow} className='bg-main-color text-white hover:bg-white hover:text-main-color duration-300 py-3 mx-11 text-center rounded-md mt-11'>Pay Now</button>
                 </div>
+                {error !== "" && <div className='text-red-200 font-medium text-center mt-2'>{error}</div> }
             </div>
         </div>
     </>
