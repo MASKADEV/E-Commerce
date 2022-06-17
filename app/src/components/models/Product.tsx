@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react'
 import { ProductsProps } from '../../types'
 import { CloseIcon } from '../icons/close-icon'
