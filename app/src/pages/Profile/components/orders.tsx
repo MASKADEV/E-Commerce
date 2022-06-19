@@ -7,7 +7,6 @@ import OrderTable from '../../Admin/componnents/ui/ordersTable';
 const OrdersUser = () => {
 
 
-  const [isLoading, setLoading] = useState<any>(false);
   const [products, setproducts] = useState<any>([{}]);
   const [productPerPage] = useState<number>(10);
   const [currentPage, setcurrentPage] = useState<number>(1);
@@ -17,7 +16,6 @@ const OrdersUser = () => {
   const paginate = (pageNumber:number) => setcurrentPage(pageNumber);
 
   let fetchOrders = async () => {
-    setLoading(true);
     try{
       let token = localStorage.getItem('token');
       const config = {
@@ -33,7 +31,6 @@ const OrdersUser = () => {
     {
       console.log(err);
     }
-    setLoading(false);
     };
 
 

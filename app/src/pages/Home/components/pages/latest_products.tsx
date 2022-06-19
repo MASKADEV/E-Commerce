@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../../../../components/ui/Cards/ProductCard';
@@ -41,7 +42,7 @@ const LatestProducts = () => {
                   <span>Plus free shipping! Use code:</span>
                   <span className="font-bold text-lg">SELLECOToday</span>
                 </div>
-                <a href="#" rel="noreferrer noopener" className="px-5 mt-4 lg:mt-0 py-3 rounded-md border block dark:bg-gray-50 dark:text-gray-900 dark:border-gray-400">Shop Now</a>
+                <a href="#" className="px-5 mt-4 lg:mt-0 py-3 rounded-md border block dark:bg-gray-50 dark:text-gray-900 dark:border-gray-400">Shop Now</a>
               </div>
             </div>
           </div>

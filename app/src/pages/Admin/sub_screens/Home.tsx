@@ -4,7 +4,6 @@ import GlobalVarialble from '../../../config/Constant';
 
 const Home = () => {
   
-  const [loading, setLoading] = useState(false);
   const [state, setstate] = useState({
       "users": 0,
       "products": 0,
@@ -12,7 +11,6 @@ const Home = () => {
   });
 
   let fetchAnalytics = async () => {
-    setLoading(true);
     try{
       let url = GlobalVarialble.url + '/admin/analytics';
       await axios.get(url).then((response : any) => {
@@ -22,7 +20,6 @@ const Home = () => {
     {
       console.log(err);
     }
-    setLoading(false);
     };
     
   useEffect(() => {

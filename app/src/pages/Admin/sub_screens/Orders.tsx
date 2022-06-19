@@ -7,7 +7,6 @@ import OrderTable from '../componnents/ui/ordersTable';
 const Orders = () => {
 
 
-  const [isLoading, setLoading] = useState<any>(false);
   const [products, setproducts] = useState<any>([{}]);
   const [productPerPage] = useState<number>(10);
   const [currentPage, setcurrentPage] = useState<number>(1);
@@ -21,7 +20,6 @@ const Orders = () => {
 
   useEffect(() => {
     let fetchproducts = async () => {
-      setLoading(true);
       try{
         let url = GlobalVarialble.url + '/admin/fetchOrders';
         await axios.get(url).then((response : any) => {
@@ -31,7 +29,6 @@ const Orders = () => {
       {
         console.log(err);
       }
-      setLoading(false);
       };
       fetchproducts();
   }, [])
