@@ -33,4 +33,14 @@ class UserOperation {
         return $result;
     }
 
+    public function fetchAllOrders($id) {
+        require_once('src/models/connection.php');
+        $db = new Database();
+        $str = 'SELECT * FROM `Orders` WHERE user_id=?';
+        $query = $db->connection()->prepare($str);
+        $query->execute([$id]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }

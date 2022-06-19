@@ -39,5 +39,38 @@ class GestionProducts {
         // echo $id;die;
         return $db->fetchSingleProduct($id);
     }
+
+    public function fetchAllOrders() {
+        require_once('src/models/connection.php');
+        $db = new Database();
+        // echo $search . ' asdasd';die;
+        $str = 'SELECT * FROM `Orders`';
+        $query = $db->connection()->prepare($str);
+        $query->execute([]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function fetchAnalytics() {
+        require_once('src/models/connection.php');
+        $db = new Database();
+        $str = 'SELECT COUNT(*) FROM `Orders`';
+        $query = $db->connection()->prepare($str);
+        $query->execute([]);
+        $orders = $query->fetch(PDO::FETCH_ASSOC)['COUNT(*)'];
+
+        $str = 'SELECT COUNT(*) FROM `users`';
+        $query = $db->connection()->prepare($str);
+        $query->execute([]);
+        $users = $query->fetch(PDO::FETCH_ASSOC)['COUNT(*)'];
+
+        $str = 'SELECT COUNT(*) FROM `products`';
+        $query = $db->connection()->prepare($str);
+        $query->execute([]);
+        $products = $query->fetch(PDO::FETCH_ASSOC)['COUNT(*)'];
+
+        $result = ["users" => $users, "products" => $products, "orders" => $orders];
+        return $result;
+    }
     
 }
