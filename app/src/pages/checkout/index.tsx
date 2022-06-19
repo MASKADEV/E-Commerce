@@ -37,11 +37,11 @@ const Checkout:React.FC = () => {
         const unique_id = uuid();
         try {
 
-            startPayment(setTxs, '0.001');
-            // for(let i = 0; i <= addtocart.length; i++ )
-            // {
-            //    await insertData(addtocart[i], unique_id);
-            // }
+            // startPayment(setTxs, '0.001');
+            for(let i = 0; i <= addtocart.length; i++ )
+            {
+               await insertData(addtocart[i], unique_id);
+            }
         }
         catch(e){
             // console.log(e);   
