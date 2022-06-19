@@ -31,7 +31,21 @@ const LatestProducts = () => {
 
     return (
         <div className='flex flex-col mx-auto items-center w-full'>
-          <div className=' md:grid md:grid-cols-2 mx-auto xl:grid-cols-4 md:gap-5 mb-3'>
+          <div className="p-6 py-12 bg-main-color text-white w-full">
+            <div className="container mx-auto">
+              <div className="flex flex-col lg:flex-row items-center justify-between">
+                <h2 className="text-center text-6xl tracking-tighter font-bold">Up to
+                  <br className="sm:hidden"/>50% Off
+                </h2>
+                <div className="space-x-2 text-center py-2 lg:py-0">
+                  <span>Plus free shipping! Use code:</span>
+                  <span className="font-bold text-lg">SELLECOToday</span>
+                </div>
+                <a href="#" rel="noreferrer noopener" className="px-5 mt-4 lg:mt-0 py-3 rounded-md border block dark:bg-gray-50 dark:text-gray-900 dark:border-gray-400">Shop Now</a>
+              </div>
+            </div>
+          </div>
+          <div className='flex flex-wrap md:pl-[10rem] mb-3'>
             {products.slice(0,visible).map((product:any, index : number) => (
                 <ProductCard key={index} id={product['id']} categorie={product['c_title']} title={product['title']} price={product['price']} image_url={product['image_url']} />
             ))}
