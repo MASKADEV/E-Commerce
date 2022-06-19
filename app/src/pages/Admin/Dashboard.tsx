@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Dashboard: React.FC = () => {
-  const [switchMenu, setswitchMenu] = useState<string>('managment');
+  const [switchMenu, setswitchMenu] = useState<string>('home');
   
   const loadpage = (page : string) => {
     switch (page) {
