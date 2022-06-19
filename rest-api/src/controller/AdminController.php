@@ -200,6 +200,36 @@ class AdminController {
         }
     }
 
+    public function fetchOrders(){
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+        require_once('src/config/Header.php');
+        require_once('src/models/admin/gestionProducts.php');
+        if($_SERVER['REQUEST_METHOD'] == 'GET'){
+            $gp = new GestionProducts();
+            $result = $gp->fetchAllOrders();
+            echo json_encode($result);
+        }else {
+            echo AdminController::message('invalide request', true);
+        }
+    }
+
+    public function analytics() {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+        require_once('src/config/Header.php');
+        require_once('src/models/admin/gestionProducts.php');
+        if($_SERVER['REQUEST_METHOD'] == 'GET'){
+            $gp = new GestionProducts();
+            $result = $gp->fetchAnalytics();
+            echo json_encode($result);
+        }else {
+            echo AdminController::message('invalide request', true);
+        }
+    }
+
     public static function message($content, $status) {
 	    return json_encode(array(
             'message' => $content, 
