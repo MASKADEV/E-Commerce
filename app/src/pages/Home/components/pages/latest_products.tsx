@@ -31,7 +31,7 @@ const LatestProducts = () => {
   }
 
     return (
-        <div className='flex flex-col mx-auto items-center w-full'>
+        <div className='md:pl-[21rem]  flex flex-col mx-auto items-center w-full'>
           <div className="p-6 py-12 bg-main-color text-white w-full">
             <div className="container mx-auto">
               <div className="flex flex-col lg:flex-row items-center justify-between">
@@ -46,7 +46,7 @@ const LatestProducts = () => {
               </div>
             </div>
           </div>
-          <div className='flex flex-wrap md:pl-[10rem] mb-3'>
+          <div className='flex flex-wrap mb-3'>
             {products.slice(0,visible).map((product:any, index : number) => (
                 <ProductCard key={index} id={product['id']} categorie={product['c_title']} title={product['title']} price={product['price']} image_url={product['image_url']} />
             ))}
