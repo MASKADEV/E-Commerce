@@ -43,4 +43,28 @@ class UserOperation {
         return $result;
     }
 
+    public function fetchByCategories($categories) {
+        require_once('src/models/connection.php');
+        $db = new Database();
+        $str = 'SELECT id FROM `categories` WHERE title=?';
+        $query = $db->connection()->prepare($str);
+        $query->execute([$categories]);
+        $id = $query->fetch(PDO::FETCH_ASSOC)['id'];
+        $str = 'SELECT products.*, categories.title AS c_title FROM `products` INNER JOIN categories ON categories.id = products.categories_id WHERE `categories_id`=?';
+        $query = $db->connection()->prepare($str);
+        $query->execute([$id]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function fetchRelatedProducts($categories) {
+        require_once('src/models/connection.php');
+        $db = new Database();
+        $str = 'SELECT products.*, categories.title AS c_title FROM `products` INNER JOIN categories ON categories.id = products.categories_id WHERE `categories_id`=?';
+        $query = $db->connection()->prepare($str);
+        $query->execute([$categories]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }
