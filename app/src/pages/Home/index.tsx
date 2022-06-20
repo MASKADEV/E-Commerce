@@ -26,7 +26,6 @@ const Home = () => {
   return (
     <div className='flex flex-row w-screen h-screen pt-[4rem]'>
       <SideBar currentPage={currentPage} setcurrentPage={setcurrentPage} />
-      <div className='md:w-[20rem]'></div>
       <div>
         {fetchCurrentPage()}
       </div>
