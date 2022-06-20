@@ -105,6 +105,54 @@ class UserController {
 
     }
 
+    public function fetchByCategories() {
+        ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+		require_once('src/models/user/userOperation.php');
+		require_once('src/config/Header.php');
+		require_once('src/security/jwt_handler.php');
+		$jwt = new JwtController();
+		$token = $jwt->getToken();
+		if($jwt->verification($token)){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $useropeartion = new UserOperation();
+                $data = json_decode(file_get_contents("php://input"));
+                $categories = $data->title;
+                $result = $useropeartion->fetchByCategories($categories);
+                echo json_encode($result);
+            } else {
+                echo AdminController::message('invalide request', true);
+            }
+		}else {
+			echo json_encode(['request' => 'invalide token please try to login again!']);
+		}
+    }
+
+    public function fetchRelatedProducts() {
+        ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+		require_once('src/models/user/userOperation.php');
+		require_once('src/config/Header.php');
+		require_once('src/security/jwt_handler.php');
+		$jwt = new JwtController();
+		$token = $jwt->getToken();
+		if($jwt->verification($token)){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $useropeartion = new UserOperation();
+                $data = json_decode(file_get_contents("php://input"));
+                $categories = $data->id;
+                $result = $useropeartion->fetchRelatedProducts($categories);
+                echo json_encode($result);
+            } else {
+                echo AdminController::message('invalide request', true);
+            }
+		}else {
+			echo json_encode(['request' => 'invalide token please try to login again!']);
+		}
+    }
+
     public static function message($content, $status) {
 	    return json_encode(array(
             'status' => $status, 
