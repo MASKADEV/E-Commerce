@@ -32,24 +32,20 @@ const Checkout:React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [addtocart])
     
+    //Order Button
     const orderNow = async ( e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        const unique_id = uuid();
         try {
 
-            // startPayment(setTxs, '0.001');
-            for(let i = 0; i <= addtocart.length; i++ )
-            {
-               await insertData(addtocart[i], unique_id);
-            }
+            //payment function with ether
+            paymentMethod(setTxs, totalPrice.toString());
         }
         catch(e){
-            // console.log(e);   
+            console.error(e);
         }
-        // window.location.reload();
     }
     
-    const insertData = async (data :any, id:string) => {
+    const insertData = async (id:string, data :any) => {
         let token = localStorage.getItem('token');
         const config = {
             headers: {
@@ -63,26 +59,29 @@ const Checkout:React.FC = () => {
             'quantity' : data['quantity'],
         }, config);
 
+        window.location.reload();
     }
 
-    const startPayment = async (setTxs : any, total  : string) => {
 
-              if (!window.ethereum)
-                throw new Error("No crypto wallet found. Please install it.");
-              await window.ethereum.send("eth_requestAccounts");
-              const provider = new ethers.providers.Web3Provider(window.ethereum);
-              const signer = provider.getSigner();
-              ethers.utils.getAddress('0x883369F2753fF191A30AC9DAB6CE350Ae9cF395C');
-              const tx = await signer.sendTransaction({
+    const paymentMethod = async (setTxs : any, total  : string) => {
+
+        const unique_id = uuid();
+        if (!window.ethereum)
+            throw new Error("No crypto wallet found. Please install it.");
+            await window.ethereum.send("eth_requestAccounts");
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            ethers.utils.getAddress('0x883369F2753fF191A30AC9DAB6CE350Ae9cF395C');
+            await signer.sendTransaction({
                 to: '0x883369F2753fF191A30AC9DAB6CE350Ae9cF395C',
                 value: ethers.utils.parseEther(total)
-              });
-              console.log('maska');
-              console.log(tx);
-            //   setTxs([tx]);
-            //   console.log("tx : " + tx);
-            
-      };
+            });
+        for(let i = 0; i <= addtocart.length; i++ )
+        {
+           await insertData( unique_id, addtocart[i]);
+        }
+
+    };
 
   return (
     <>
