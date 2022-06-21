@@ -40,7 +40,6 @@ class UserController {
 		require_once('src/security/jwt_handler.php');
         $jwt = new JwtController();
         $token = $jwt->getToken();
-        // $jwt->verification($token);
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = json_decode(file_get_contents("php://input"));
             $search = $data->search;
@@ -114,7 +113,6 @@ class UserController {
 		require_once('src/security/jwt_handler.php');
 		$jwt = new JwtController();
 		$token = $jwt->getToken();
-		if($jwt->verification($token)){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $useropeartion = new UserOperation();
                 $data = json_decode(file_get_contents("php://input"));
@@ -124,9 +122,6 @@ class UserController {
             } else {
                 echo AdminController::message('invalide request', true);
             }
-		}else {
-			echo json_encode(['request' => 'invalide token please try to login again!']);
-		}
     }
 
     public function fetchRelatedProducts() {
@@ -138,7 +133,6 @@ class UserController {
 		require_once('src/security/jwt_handler.php');
 		$jwt = new JwtController();
 		$token = $jwt->getToken();
-		if($jwt->verification($token)){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $useropeartion = new UserOperation();
                 $data = json_decode(file_get_contents("php://input"));
@@ -148,9 +142,6 @@ class UserController {
             } else {
                 echo AdminController::message('invalide request', true);
             }
-		}else {
-			echo json_encode(['request' => 'invalide token please try to login again!']);
-		}
     }
 
     public static function message($content, $status) {
