@@ -16,12 +16,14 @@ const AddProductsForm:React.FC<ProductFormProps> = ({showForm, setShowForm}) => 
   const  {register, handleSubmit} = useForm<ProductsForm>();
   const [categories, setcategories] = useState<object[]>([{}]);
   const [percent, setPercent] = useState<number>(0);
+  
   //Fetch Categories
     const fetchCategories = async () => {
       let {data} = await axios.get(GlobalVarialble.url + '/admin/fetchCategories',);
       setcategories(data);
     }
-    let percentage = 100;
+  
+  let percentage = 100;
   useEffect(() => {
     fetchCategories();
   }, [showForm])
