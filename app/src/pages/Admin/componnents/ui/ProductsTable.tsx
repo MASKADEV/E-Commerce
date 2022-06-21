@@ -8,7 +8,6 @@ const ProductsTable:React.FC<ProductsTableProps> = ({setdata,products, showForm,
   const deleteProduct = async (id?:number, productName?: string) => {
     await axios.post(GlobalVarialble.url + '/admin/deleteProducts', {id});
     alert('Product ' + productName + ' has been deletet')
-    window.location.reload();
   }
   
   return (
