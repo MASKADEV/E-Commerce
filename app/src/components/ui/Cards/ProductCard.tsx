@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { ProductsProps } from '../../../types'
 
 const ProductCard:React.FC<ProductsProps> = ({title, id,description, image_url, price, categorie}) => {
+
 
   return (
         <div className="relative flex flex-col text-white p-4 md:ml-3 items-center overflow-hidden">
@@ -15,7 +16,7 @@ const ProductCard:React.FC<ProductsProps> = ({title, id,description, image_url, 
                     <p className='text-sm text-gray'>{categorie}</p>
                 </div>
                 <div>
-                    <p className='md:text-xl font-medium'>{price}$</p>
+                    <p className='md:text-xl font-medium'>{price} Ether</p>
                 </div>
             </div>
             <div className='w-full mt-1'>
