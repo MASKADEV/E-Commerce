@@ -52,10 +52,10 @@ const ProductsTable:React.FC<ProductsTableProps> = ({setdata,products, showForm,
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         <div className="text-gray-900">{product.stock}</div>
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${product.price}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{product.price} Eth</td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <div className='flex md:flex-row flex-col justify-end'>
-                          <button onClick={(e:React.MouseEvent<HTMLButtonElement>) => {e.preventDefault(); setdata(product);setShowForm(!showForm)}} className="text-white hover:text-main-color mx-3 font-medium">
+                          <button onClick={(e:React.MouseEvent<HTMLButtonElement>) => {e.preventDefault(); setdata(product);setShowForm(!showForm)}} className="text-white hidden hover:text-main-color mx-3 font-medium">
                             Edit
                           </button>
                           <button onClick={() => {deleteProduct(product.id, product.title)}} className="text-white hover:text-red-600 mx-3 font-medium">

@@ -16,7 +16,7 @@ const ProductCard:React.FC<ProductsProps> = ({title, id,description, image_url, 
                     <p className='text-sm text-gray'>{categorie}</p>
                 </div>
                 <div>
-                    <p className='md:text-xl font-medium'>{price} Ether</p>
+                    <p className='md:text-xl font-medium'>{price} Eth</p>
                 </div>
             </div>
             <div className='w-full mt-1'>
