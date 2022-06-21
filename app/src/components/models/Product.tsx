@@ -13,7 +13,7 @@ const Product : React.FC<ProductsProps> = ({title, categorie, price, image_url})
                 <div className='h-full flex flex-col justify-start items-start ml-3'>
                     <h1 className='font-medium'>{title}</h1>
                     <h2 className='text-gray mt-3'>{categorie}</h2>
-                    <p className='text-gray mt-1'>{price}$</p>
+                    <p className='text-gray mt-1'>{price}Ethr</p>
                 </div>
             </div>
         </div>
