@@ -10,7 +10,7 @@ import ProductCard from '../../components/ui/Cards/ProductCard';
 
 const ProductDetails:React.FC = () => {
     
-    const [id, setid] = useState<any>();
+    let [id, setid] = useState<any>();
     const [loading, setLoading] = useState(false);
     const [product_info, setProductInfo] = useState({
         'id' : 0,
@@ -30,7 +30,7 @@ const ProductDetails:React.FC = () => {
         dispatch(addItem({'title' : product_info.title, 'id':id, 'image' : product_info.image_url, 'category' : product_info.categories, 'price' : product_info.price, 'quantity' : quantity}));
         setQuantity(0);
     }
-
+    id = window.location.href.split('/').pop();
     useEffect(() => {
         setid(window.location.href.split('/').pop());
     }, [id])
@@ -105,7 +105,7 @@ const ProductDetails:React.FC = () => {
                 <div className='md:px-[7rem] px-10 mt-[3rem] flex flex-col mx-auto items-center w-full'>
                     <div className='flex flex-wrap mb-3 mt-1'>
                         {products.slice(0,visible).map((product:any, index : number) => (
-                            <ProductCard key={index} id={product['id']} categorie={product['c_title']} title={product['title']} price={product['price']} image_url={product['image_url']} />
+                            <ProductCard setid={setid} key={index} id={product['id']} categorie={product['c_title']} title={product['title']} price={product['price']} image_url={product['image_url']} />
                         ))}
                     </div>
                 </div>  
