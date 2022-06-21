@@ -20,6 +20,7 @@ export interface AuthProps {
 
 export interface ProductsProps {
     id : number,
+    setid?: React.SetStateAction<any>,
     title : string,
     categorie : string,
     price : number,
