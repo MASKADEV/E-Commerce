@@ -44,7 +44,7 @@ const Managment:React.FC = () => {
       setLoading(false);
       };
       fetchproducts();
-  }, [])
+  }, [products])
   
   
   return (
