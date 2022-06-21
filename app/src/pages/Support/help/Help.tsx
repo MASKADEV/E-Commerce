@@ -18,7 +18,7 @@ const Help = () => {
 			<textarea id="message" placeholder="Message..." className="block w-full p-2 rounded autoexpand focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400 dark:bg-gray-800"></textarea>
 		</div>
 		<div>
-			<button type="submit" className="w-full px-4 py-2 bg-main-color text-white font-bold rounded shadow focus:outline-none focus:ring hover:ring focus:ring-opacity-50 dark:bg-violet-400 focus:ring-violet-400 hover:ring-violet-400 dark:text-gray-900">Send</button>
+			<button type="submit" className="w-full px-4 py-2 bg-main-color text-white font-bold rounded shadow focus:outline-none focus:ring hover:ring focus:ring-opacity-50 ">Send</button>
 		</div>
 	</form>
 </section>
