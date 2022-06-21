@@ -8,6 +8,7 @@ import Orders from './sub_screens/Orders';
 import GlobalVarialble from '../../config/Constant';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import Message from './sub_screens/Message';
 
 const Dashboard: React.FC = () => {
   const [switchMenu, setswitchMenu] = useState<string>('home');
@@ -21,7 +22,7 @@ const Dashboard: React.FC = () => {
       case 'orders':
         return <Orders />
       case 'contact':
-        return <Contact />
+        return <Message />
     }
   }
   let navigate = useNavigate();
