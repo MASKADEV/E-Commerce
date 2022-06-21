@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import SideBar from '../../components/ui/Navigation/SideBar';
-import ExploreProducts from './components/pages/explore_products';
-import LatestProducts from './components/pages/latest_products';
-import TrendingProducts from './components/pages/trending_products';
+import ExploreProducts from './sub_pages/pages/explore_products';
+import LatestProducts from './sub_pages/pages/latest_products';
+import TrendingProducts from './sub_pages/pages/trending_products';
 
 
 const Home = () => {
