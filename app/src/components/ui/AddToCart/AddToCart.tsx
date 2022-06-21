@@ -21,15 +21,17 @@ const AddToCart:React.FC<navBarProps> = ({showPanier, setShowPanier}) => {
   
 
   return (
-    <div className={`fixed h-full ${!showPanier ? ' -right-[30rem]' : ' right-0'} top-0 w-[25rem] z-30 duration-300 ease-out bg-navBar-bg text-white border-l-2 border-l-white border-opacity-30`}>
-        <div className='  flex flex-row items-center w-full justify-between mt-6 px-3 h-[3rem]'>
-          <div className='text-xl font-medium'>Shopping Cart</div>
-          <CloseIcon onClick={() => {setShowPanier(!showPanier)}} className='h-[1.3rem] hover:h-[1.75rem] duration-500 cursor-pointer text-white opacity-70 hover:opacity-100'/>
-        </div>
-        <div className=' relative flex flex-col mt-[8rem] h-[70%] overflow-x-hidden'>
-        {addtocart.map((item : any, index : number) => (
-          <AddToCartCard key={index} index={index} id={item.id} quantity={item.quantity} title={item.title} price={item.price} category={item.category} image ={item.image}/>
-        ))}
+    <div className={`fixed h-full ${!showPanier ? ' -right-[30rem]' : ' right-0'}  pb-3 flex flex-col justify-between top-0 w-[25rem] z-30 duration-300 ease-out bg-navBar-bg text-white border-l-2 border-l-white border-opacity-30`}>
+        <div className=' h-[40%] '>
+          <div className='  flex flex-row items-center w-full justify-between mt-6 px-3 h-[3rem]'>
+            <div className='text-xl font-medium'>Shopping Cart</div>
+            <CloseIcon onClick={() => {setShowPanier(!showPanier)}} className='h-[1.3rem] hover:h-[1.75rem] duration-500 cursor-pointer text-white opacity-70 hover:opacity-100'/>
+          </div>
+          <div className=' relative flex flex-col mt-[8rem] overflow-x-hidden'>
+          {addtocart.map((item : any, index : number) => (
+            <AddToCartCard key={index} index={index} id={item.id} quantity={item.quantity} title={item.title} price={item.price} category={item.category} image ={item.image}/>
+          ))}
+          </div>
         </div>
         <div className='w-full flex flex-col justify-center'>
           <hr className='w-full h-[0.2rem] bg-opacity-50 bg-white'/>
