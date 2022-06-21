@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { DropArrow } from '../../../../components/icons/chevron-down-outline';
+import GlobalVarialble from '../../../../config/Constant';
 
 interface editproductprops {
     data? : any,
@@ -9,14 +11,36 @@ interface editproductprops {
 }
 
 const EditProduct:React.FC<editproductprops> = ({data,showForm,setShowForm}) => {
-    const  {register, handleSubmit} = useForm();
+    const  {register, handleSubmit} = useForm(
+      {defaultValues : {
+        'title' : data['title'],
+        'description': data['description'],
+        'categories' : data['categories_id'],
+        'stock' : data['stock'],
+        'price': data['price'],
+        'image_url' : data['image_url']
+      }}
+    );
     const submit = (formdata : any) => {
       console.log(formdata);
     }
+    const [categories, setcategories] = useState<object[]>([{}]);
+
+    //Fetch Categories
+    const fetchCategories = async () => {
+      let {data} = await axios.get(GlobalVarialble.url + '/admin/fetchCategories',);
+      setcategories(data);
+    }
 
     useEffect(() => {
+      fetchCategories();
+      console.log(data);
       
-    }, [])
+      handleSubmit<typeof data>({
+        ...data
+      })
+
+    }, [data, handleSubmit])
     
 
     return (
@@ -42,12 +66,12 @@ const EditProduct:React.FC<editproductprops> = ({data,showForm,setShowForm}) => 
               Categories
             </label>
             <div {...register("categories")} className='bg-white flex flex-row items-center w-full rounded px-2'>
-            <select className='shadow outline-hidden appearance-none   w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="categories" id="categories">
-              <option value="T-shirt">T-shirt</option>
-              <option value="Jeans">Jeans</option>
-              <option value="Perfum">Perfum</option>
-            </select>
-            <DropArrow className='h-5 w-5 text-black'/>
+              <select className='shadow outline-hidden appearance-none   w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="categories" id="categories">
+                {categories.map((category: any, index) => (
+                  <option key={index} value={category.id}>{category['title']}</option>
+                ))}
+              </select>
+              <DropArrow className='h-5 w-5 text-black'/>
             </div>
           </div>
           {/* Product STOCK */}
