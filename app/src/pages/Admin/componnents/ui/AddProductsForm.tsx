@@ -84,24 +84,24 @@ const AddProductsForm:React.FC<ProductFormProps> = ({showForm, setShowForm}) => 
 
   
   return (
-    <div className={`w-screen ${!showForm ? 'hidden' : ' absolute'}`}>
-      <form encType='multipart/form-data' onSubmit={handleSubmit(onsubmit)} className='bg-navBar-bg p-11 mx-auto flex flex-col w-[40%] rounded-xl items-center mb-11'>
+    <div className={`w-screen ${!showForm ? 'hidden' : ' absolute'} z-20`}>
+      <form encType='multipart/form-data' onSubmit={handleSubmit(onsubmit)} className='bg-navBar-bg p-11 mx-auto flex flex-col xl:w-[40%] md:w-[60%] w-[80%] rounded-xl items-center mb-11'>
       {/* Product Name */}
-      <div className="mb-4 w-[90%]">
+      <div className="mb-4 md:w-[90%] w-[70%]">
         <label className="block text-white text-gray-700 text-sm font-medium mb-2" htmlFor="title">
           Title
         </label>
         <input {...register("title")} className="shadow outline-hidden appearance-none border border-gray border-opacity-20 rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" type="text" placeholder="Product Name"/>
       </div>
       {/* Product Description */}
-      <div className="mb-4 w-[90%]">
+      <div className="mb-4 md:w-[90%] w-[70%]">
         <label className="block text-white text-gray-700 text-sm font-medium mb-2" htmlFor="description">
           Description
         </label>
         <input {...register("description")} className="shadow outline-hidden appearance-none border border-gray border-opacity-20 rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" type="text" placeholder="Product Description"/>
       </div>
       {/* Product Categories */}
-      <div className="mb-4 w-[90%]">
+      <div className="mb-4 md:w-[90%] w-[70%]">
         <label className="block text-white text-gray-700 text-sm font-medium mb-2" htmlFor="categories">
           Categories
         </label>
@@ -115,21 +115,21 @@ const AddProductsForm:React.FC<ProductFormProps> = ({showForm, setShowForm}) => 
         </div>
       </div>
       {/* Product STOCK */}
-      <div className="mb-4 w-[90%]">
+      <div className="mb-4 md:w-[90%] w-[70%]">
         <label className="block text-white text-gray-700 text-sm font-medium mb-2" htmlFor="stock">
           Stock
         </label>
         <input {...register("stock")} className="shadow outline-hidden appearance-none border border-gray border-opacity-20 rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="stock" type="number" min={0} placeholder="Stock"/>
       </div>
       {/* Product Price */}
-      <div className="mb-4 w-[90%]">
+      <div className="mb-4 md:w-[90%] w-[70%]">
         <label className="block text-white text-gray-700 text-sm font-medium mb-2" htmlFor="price">
           Price
         </label>
         <input {...register('price')} className="shadow outline-hidden appearance-none border border-gray border-opacity-20 rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="price" type="number" min={1} placeholder="Price"/>
       </div>
       {/* Product Images */}
-      <div className="mb-4 w-[90%]">
+      <div className="mb-4 md:w-[90%] w-[70%]">
         <label className="block text-white text-gray-700 text-sm font-medium mb-2" htmlFor="products_images">
           Product Images
         </label>

@@ -50,7 +50,7 @@ const Managment:React.FC = () => {
   return (
     <div className='relative'>
       <br className='mb-11'/>
-      <div className="sm:flex sm:items-center md:flex hidden">
+      <div className="sm:flex sm:items-center flex">
         <div className="flex flex-row ml-11">
           <button
             type="button"
