@@ -13,6 +13,7 @@ const Authentication:React.FC<AuthProps> = ({showAuth, setAuth}) => {
       }
     </div>
   )
+      
 }
 
 export default Authentication
