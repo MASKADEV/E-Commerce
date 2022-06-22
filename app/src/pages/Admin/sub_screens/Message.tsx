@@ -3,7 +3,7 @@ import React from 'react'
 const Message = () => {
   return (
     <div className="container p-2 mx-auto sm:p-4 text-white md:pt-[10rem] pt-[4rem]">
-      <div className="flex flex-col overflow-x-auto text-xs">
+      <div className="flex flex-col overflow-x-auto text-md">
         <div className="flex text-left ">
           <div className="flex items-center justify-center w-8 px-2 py-3 sm:p-3">
             <input type="checkbox" name="All" className="w-3 h-3 rounded-sm accent-violet-400" />
