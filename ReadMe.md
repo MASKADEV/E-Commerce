@@ -1,5 +1,3 @@
-
-<p class="ekeyz-0 jasXoh">Dans le cadre du projet Fil rouge, chaque apprenant a proposé les spécifications d'une idée novatrice qui a été validée par son formateur.</p>
 <p class="ekeyz-0 jasXoh">Les idées et cahiers de charges proposée sont présentés dans le fichier en <b>PJ.</b></p>
 <p class="ekeyz-0 jasXoh">​</p>
 <p class="ekeyz-0 jasXoh"><b>Actions à réaliser :</b></p>
